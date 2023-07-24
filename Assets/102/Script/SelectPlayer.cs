@@ -41,7 +41,7 @@ public class SelectPlayer : MonoBehaviour
         }
         if(SelectNum == 0)  //0이면 1번 캐릭실행
         {
-            if (isMain == false) 
+            if (isMain == false)  //
             { 
                 s1p(); 
             
