@@ -9,10 +9,6 @@ public class PlayerBullet : MonoBehaviour
     public GameObject BoomEffect;
     Rigidbody2D Rigidbody;
 
-    //대각선 발사용 변수
-    public int diagonal = 0;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +18,7 @@ public class PlayerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody.AddForce(new Vector2(diagonal, Speed * Time.deltaTime), ForceMode2D.Impulse);
+        Rigidbody.AddForce(new Vector2(0, Speed * Time.deltaTime), ForceMode2D.Impulse);
     }
 
     private void OnBecameInvisible()

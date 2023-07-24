@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Transform pos2 = null;
     public Transform pos3 = null;
 
-    public int WeaponPower = 0;
+    public static int WeaponPower = 0;
     public static int Bomb = 3;
 
     public GameObject BoomEffect;
@@ -104,15 +104,15 @@ public class PlayerController : MonoBehaviour
                 else if (WeaponPower == 2)
                 {
                     Instantiate(Bullet[WeaponPower], pos1.position, Quaternion.identity);
-                    Instantiate(Bullet[WeaponPower - 1], pos2.position, Quaternion.identity);
-                    Instantiate(Bullet[WeaponPower - 1], pos3.position, Quaternion.identity);
+                    Instantiate(Bullet[WeaponPower - 1], pos2.position, pos2.transform.rotation);
+                    Instantiate(Bullet[WeaponPower - 1], pos3.position, pos3.transform.rotation);
                     CoolTime = CoolTimestatic;
                 }
                 else if (WeaponPower == 3)
                 {
                     Instantiate(Bullet[WeaponPower], pos1.position, Quaternion.identity);
-                    Instantiate(Bullet[WeaponPower - 1], pos2.position, Quaternion.identity);
-                    Instantiate(Bullet[WeaponPower - 1], pos3.position, Quaternion.identity);
+                    Instantiate(Bullet[WeaponPower - 1], pos2.position, pos2.transform.rotation);
+                    Instantiate(Bullet[WeaponPower - 1], pos3.position, pos3.transform.rotation);
                     CoolTime = CoolTimestatic;
                 }
             }
@@ -124,5 +124,10 @@ public class PlayerController : MonoBehaviour
                 CoolTime = 0;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
     }
 }
