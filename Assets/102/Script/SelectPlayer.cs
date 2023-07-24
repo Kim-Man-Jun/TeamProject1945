@@ -104,7 +104,7 @@ public class SelectPlayer : MonoBehaviour
         s3.SetActive(false);
     }
 
-    void SceneChanger()
+    void SceneChanger() //SelectNum에따른 씬전환 
     {
 
 
