@@ -109,14 +109,14 @@ public class SelectPlayer : MonoBehaviour
 
 
 
-        //if (SelectNum == 0)
-        //{
-        //    SceneManager.LoadScene("LHS_Scene");
-        //}
-        //if (SelectNum == 1)
-        //{
-        //    SceneManager.LoadScene("LHS_Scene");
-        //}
+        if (SelectNum == 0)
+        {
+            SceneManager.LoadScene("Wonjae");
+        }
+        if (SelectNum == 1)
+        {
+            SceneManager.LoadScene("KMJ_Stage");
+        }
 
 
         if (SelectNum == 2)
