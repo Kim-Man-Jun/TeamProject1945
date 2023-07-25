@@ -194,5 +194,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target_Player: {fileID: 0}
-  Speed: 700
+  Speed: 1200
   BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}

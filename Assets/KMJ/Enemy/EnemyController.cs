@@ -8,8 +8,8 @@ public class EnemyController : MonoBehaviour
     public int HP = 100;
     public float Speed = 5f;
     public float Delay = 1f;
-    public Transform ms = null;
-    public Transform ms2 = null;
+    public Transform ms;
+    public Transform ms2;
     public GameObject bullet;
     public static int RandomPos;
 
@@ -32,12 +32,12 @@ public class EnemyController : MonoBehaviour
     {
         transform.Translate(new Vector2(0, -Speed * Time.deltaTime));
 
-        if (gameObject.transform.position.x > 6f)
+        if (gameObject.transform.position.x > 2.6f)
         {
             Destroy(gameObject);
         }
 
-        if (gameObject.transform.position.x < -6f)
+        if (gameObject.transform.position.x < -2.6f)
         {
             Destroy(gameObject);
         }

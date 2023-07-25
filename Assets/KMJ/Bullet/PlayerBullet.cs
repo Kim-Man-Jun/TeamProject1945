@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour
     {
         Rigidbody.AddForce(new Vector2(0, Speed * Time.deltaTime), ForceMode2D.Impulse);
 
-        if(gameObject.transform.position.y >= -13.5f)
+        if(gameObject.transform.position.y >= -16.18f)
         {
             Destroy(gameObject);
         }

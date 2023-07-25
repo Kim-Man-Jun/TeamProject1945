@@ -7,6 +7,8 @@ public class EnegyBoltControl : MonoBehaviour
     public GameObject Target_Player;
 
     public float Speed = 5f;
+    public int Power = 10;
+
     Vector2 dir;
     Vector2 dirNo;
     public GameObject BoomEffect;
@@ -33,5 +35,20 @@ public class EnegyBoltControl : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().Damage(Power);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
+        Destroy(go, 0.5f);
     }
 }

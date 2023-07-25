@@ -5,6 +5,7 @@ using UnityEngine;
 public class MissileControl : MonoBehaviour
 {
     public float Speed = 10f;
+    public int Power = 15;
 
     public GameObject BoomEffect;
 
@@ -29,7 +30,14 @@ public class MissileControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<PlayerController>().Damage(Power);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
+        Destroy(go, 0.5f);
     }
 }

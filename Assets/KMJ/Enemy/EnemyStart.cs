@@ -20,8 +20,7 @@ public class EnemyStart : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            EnemyController enemyController = FindObjectOfType<EnemyController>();
-            enemyController.EnemyStart = true;
+            collision.gameObject.GetComponent<EnemyController>().EnemyStart = true;
         }
     }
 }

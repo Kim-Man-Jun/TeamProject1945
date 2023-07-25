@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -692762972, guid: 58f6a54fca6a9c644a306b3ac747e5da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -211,7 +211,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &7650313066054900891
 MonoBehaviour:
@@ -234,3 +234,4 @@ MonoBehaviour:
   BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
   Item: {fileID: 0}
   Direction: 0
+  EnemyStart: 0
