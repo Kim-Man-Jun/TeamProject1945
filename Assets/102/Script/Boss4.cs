@@ -13,16 +13,20 @@ public class Boss4 : MonoBehaviour
     public GameObject Bullet;
     public GameObject BouncyBullet;
     public int PatternTime = 0;
-    public bool isPattern1 = false;
+    public bool isPattern4 = false;
+
     IEnumerator Pt1;
     IEnumerator Pt2;
     IEnumerator Pt3;
+    IEnumerator Pt4;
+
 
     void Start()
     {
         Pt1 = Pattern1();
         Pt2 = CircleFire();
         Pt3 = Pattern3();
+        Pt4 = Pattern4();
         StartCoroutine(Pt1);
         Invoke("TimeCount", 1);
       
@@ -32,25 +36,34 @@ public class Boss4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPattern1 == true)
-        CreateBullet();
+        
+        if(isPattern4 == true) 
+        {
+            BulletPos.Rotate(0, 0, 3);
+        }
+       
       
     }
 
     void TimeCount()
     {
         PatternTime++;
-        if(PatternTime == 50)
+        if(PatternTime == 1)
             
-        { 
-            PatternTime = 0; 
+        {
+            isPattern4 = false;
+           
+            StartCoroutine(Pt1);
+            Invoke("CreateBullet", 0);
+           
+            
         }
       
 
         if (PatternTime == 10)
         {
             StopCoroutine(Pt1);
-            isPattern1 = false;
+            CancelInvoke("CreateBullet");
             StartCoroutine(Pt2);
         }
         
@@ -63,8 +76,14 @@ public class Boss4 : MonoBehaviour
         if (PatternTime == 40)
         {
             StopCoroutine(Pt3);
-            StartCoroutine(Pt1);
-            isPattern1 = true;
+            StartCoroutine(Pt4);
+            isPattern4 = true;
+        }
+        if (PatternTime == 50)
+        { 
+            StopCoroutine (Pt4);
+            PatternTime = 0;
+
         }
     }
   
@@ -74,10 +93,10 @@ public class Boss4 : MonoBehaviour
         float angle = 3f;
         while (true)
         {
-            isPattern1 = true;
            
-            BulletPos.Rotate(0, 0, angle);
-            
+
+
+            BulletPos.Rotate(0, 0, 3);
             Instantiate(Bullet, BulletPos1.transform.position, BulletPos1.transform.rotation);
             Instantiate(Bullet, BulletPos2.transform.position, BulletPos2.transform.rotation);
             
@@ -146,8 +165,26 @@ public class Boss4 : MonoBehaviour
         }
        
     }
+    IEnumerator Pattern4()
+    {
+        float attackrate = 0.05f;
+        float angle = 3f;
+        while (true)
+        {
+            
+
+
+            
+            Instantiate(Bullet, BulletPos.transform.position, BulletPos.transform.rotation);
+
+            yield return new WaitForSeconds(attackrate);
+
+
+        }
+    }
     void CreateBullet()
     {
         Instantiate(Bullet, BulletPos.transform.position, BulletPos.transform.rotation);
+        Invoke("CreateBullet", 0.1f);
     }
 }

@@ -26,7 +26,11 @@ public class Player4Controller : MonoBehaviour
        // if(Input.GetAxisRaw("Horizontal"))
         
         transform.Translate(moveX, moveY, 0);
-
+        
+        //if (Input.GetKeyDown(KeyCode.Z)) 
+        //{
+        //    GeneralFire();
+        //}
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = 0.5f;
@@ -47,5 +51,9 @@ public class Player4Controller : MonoBehaviour
         if (transform.position.y <= -4.3f)
             transform.position = new Vector3(transform.position.x,-4.3f, 0);
 
+    }
+    void GeneralFire()
+    {
+        Instantiate(ammo, transform.position, Quaternion.identity);
     }
 }
