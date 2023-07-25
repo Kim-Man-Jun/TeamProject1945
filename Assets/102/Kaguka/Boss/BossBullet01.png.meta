@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BossBullet01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 796ba0bd54fefba48823d2ec8124111f
+      internalID: 344193950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf944036d056ef4299b988461875d9f
+      internalID: 1184357025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a47023a724997a49b8c988e458c26cd
+      internalID: -472759998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_3
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a81fda41daa1a9428164aa2ea0b1637
+      internalID: -255060520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58860d2be47a21b49b3eec7b72237779
+      internalID: -1687077739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950c7cfad2e2ed84eb017dbe48f5bfdb
+      internalID: 340470714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_6
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 936179061c3f5374db8ae78be9c2f866
+      internalID: -339756853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BossBullet01_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 0
+        width: 33.375
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f70b9962f4b87524d8907a3c7c544b89
+      internalID: -38432438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +326,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BossBullet01_0: 344193950
+      BossBullet01_1: 1184357025
+      BossBullet01_2: -472759998
+      BossBullet01_3: -255060520
+      BossBullet01_4: -1687077739
+      BossBullet01_5: 340470714
+      BossBullet01_6: -339756853
+      BossBullet01_7: -38432438
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
