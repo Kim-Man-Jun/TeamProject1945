@@ -128,6 +128,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+    }
 
+    private void OnDestroy()
+    {
+        GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
+        Destroy(go, 0.9f);
     }
 }

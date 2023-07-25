@@ -29,4 +29,9 @@ public class EnegyBoltControl : MonoBehaviour
     {
 
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
