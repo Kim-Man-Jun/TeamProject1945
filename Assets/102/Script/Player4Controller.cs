@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player4Controller : MonoBehaviour
 {
     public float Speed;
-    public float atk;
+
     public int MaxHp;
     public int CurHp;
     public bool isDead = false;
@@ -15,9 +15,11 @@ public class Player4Controller : MonoBehaviour
     public bool isItem = false;
     public Transform BulletPos;
     public int Hac;
+    Animator ani;
     void Start()
     {
         CurHp = MaxHp;
+        ani = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,9 +27,26 @@ public class Player4Controller : MonoBehaviour
     {
         float moveX = Speed * Time.deltaTime * Input.GetAxis("Horizontal");
         float moveY = Speed * Time.deltaTime * Input.GetAxis("Vertical");
-        
-       // if(Input.GetAxisRaw("Horizontal"))
-        
+
+        if (Input.GetAxis("Horizontal") >= 0.5f)
+        {
+            ani.SetBool("right", true);
+        }
+        else
+        {
+            ani.SetBool("right", false);
+        }
+
+        if (Input.GetAxis("Horizontal") <= -0.5f)
+        {
+            ani.SetBool("left", true);
+        }
+        else
+        {
+            ani.SetBool("left", false);
+        }
+
+
         transform.Translate(moveX, moveY, 0);
         
         if (Input.GetKeyDown(KeyCode.Z)) 
