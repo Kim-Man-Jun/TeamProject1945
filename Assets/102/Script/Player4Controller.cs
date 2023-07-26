@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Player4Controller : MonoBehaviour
@@ -10,11 +11,13 @@ public class Player4Controller : MonoBehaviour
     public int CurHp;
     public bool isDead = false;
     public GameObject ammo;
-    public bool isItem = true;
-
+    public GameObject HomingAmmo;
+    public bool isItem = false;
+    public Transform BulletPos;
+    public int Hac;
     void Start()
     {
-        
+        CurHp = MaxHp;
     }
 
     // Update is called once per frame
@@ -27,10 +30,15 @@ public class Player4Controller : MonoBehaviour
         
         transform.Translate(moveX, moveY, 0);
         
-        //if (Input.GetKeyDown(KeyCode.Z)) 
-        //{
-        //    GeneralFire();
-        //}
+        if (Input.GetKeyDown(KeyCode.Z)) 
+        {
+            GeneralFire();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HomingFire();
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = 0.5f;
@@ -55,5 +63,51 @@ public class Player4Controller : MonoBehaviour
     void GeneralFire()
     {
         Instantiate(ammo, transform.position, Quaternion.identity);
+    }
+
+    void HomingFire()
+    {
+        if(isItem == true) { 
+        Instantiate(HomingAmmo, transform.position, Quaternion.identity);
+            Hac--;
+            if (Hac == 0)
+            { 
+                isItem = false;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Monster"))
+        {
+            CurHp--;
+        }
+
+        if (collision.CompareTag("Item"))
+        {
+          
+          
+            if (CurHp == MaxHp)
+            {
+                CurHp = MaxHp;
+            }
+            else 
+            {
+                CurHp++;
+            }
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Item1"))
+        {
+            isItem = true;
+            Hac = 50;
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Item2"))
+        {
+
+        }
+
     }
 }

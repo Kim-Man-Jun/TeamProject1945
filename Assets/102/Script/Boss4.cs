@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 public class Boss4 : MonoBehaviour
 {
     public Transform BulletPos;
     public Transform BulletPos1;
     public Transform BulletPos2;
+    public Transform BulletPos3;
+    int flag = 1;
+    int speed = 3;
     public int HP;
     public GameObject Bullet;
     public GameObject BouncyBullet;
+    public GameObject HomingBullet;
     public int PatternTime = 0;
     public bool isPattern4 = false;
 
@@ -40,9 +45,19 @@ public class Boss4 : MonoBehaviour
         if(isPattern4 == true) 
         {
             BulletPos.Rotate(0, 0, 3);
+            BulletPos3.Rotate(0, 0, -3);
         }
-       
-      
+
+
+        if (transform.position.x >= 6.5f)
+            flag *= -1;
+        if (transform.position.x <= -6.5f)
+            flag *= -1;
+
+        transform.Translate(flag * speed * Time.deltaTime, 0, 0);
+
+
+
     }
 
     void TimeCount()
@@ -89,7 +104,7 @@ public class Boss4 : MonoBehaviour
   
     IEnumerator Pattern1()
     { 
-        float attackrate = 0.5f;
+        float attackrate = 2f;
         float angle = 3f;
         while (true)
         {
@@ -99,7 +114,7 @@ public class Boss4 : MonoBehaviour
             BulletPos.Rotate(0, 0, 3);
             Instantiate(Bullet, BulletPos1.transform.position, BulletPos1.transform.rotation);
             Instantiate(Bullet, BulletPos2.transform.position, BulletPos2.transform.rotation);
-            
+            Instantiate(HomingBullet, BulletPos3.transform.position, Quaternion.identity);
             BulletPos1.Rotate(0, 0, angle);
             BulletPos2.Rotate(0, 0, -angle);
 
@@ -148,19 +163,23 @@ public class Boss4 : MonoBehaviour
         float atkRate = 1f;
         float p3angle = 180;
         float p3angle2 = 90f;
+        float p3angle3 = 270f;
+
         BulletPos.transform.rotation = Quaternion.identity;
         BulletPos1.transform.rotation = Quaternion.identity;
         BulletPos2.transform.rotation = Quaternion.identity;
-
+        BulletPos3.transform.rotation = Quaternion.identity;
         while (true) 
         {
             Instantiate(Bullet, BulletPos.transform.position, BulletPos.transform.rotation);
             Instantiate(Bullet, BulletPos1.transform.position, BulletPos1.transform.rotation);
             Instantiate(Bullet, BulletPos2.transform.position, BulletPos2.transform.rotation);
+            Instantiate(Bullet, BulletPos3.transform.position, BulletPos3.transform.rotation);
+            Instantiate(HomingBullet, BulletPos.transform.position, Quaternion.identity);
 
-            BulletPos.Rotate(0, 0, 3);
             BulletPos1.Rotate(0, 0, p3angle);
             BulletPos2.Rotate(0, 0, p3angle2);
+            BulletPos3.Rotate(0, 0, p3angle3);
             yield return new WaitForSeconds(atkRate);
         }
        
@@ -176,7 +195,7 @@ public class Boss4 : MonoBehaviour
 
             
             Instantiate(Bullet, BulletPos.transform.position, BulletPos.transform.rotation);
-
+            Instantiate(Bullet, BulletPos3.transform.position, BulletPos3.transform.rotation);
             yield return new WaitForSeconds(attackrate);
 
 
