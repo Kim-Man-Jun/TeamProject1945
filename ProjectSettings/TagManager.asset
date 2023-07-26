@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Monster
+  - Item
+  - Monster2
+  - Monster3
+  - Monster4
+  - Monster5
+  - Monster6
+  - Monster7
+  - Monster8
+  - Monster9
+  - Monster10
   layers:
   - Default
   - TransparentFX
@@ -11,8 +22,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Item
+  - PlayerDamage
   - 
   - 
   - 

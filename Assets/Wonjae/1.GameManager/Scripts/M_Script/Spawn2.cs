@@ -11,7 +11,7 @@ public class Spawn2 : MonoBehaviour
     public float up_es = 2.6f;
 
     public float StartTime = 1;
-    public float SpawnStop = 30;
+    public float SpawnStop = 15;
     public GameObject Monster;
     public GameObject Monster2;
 

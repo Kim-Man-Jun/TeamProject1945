@@ -5,8 +5,10 @@ using UnityEngine;
 public class LV2_Monster : MonoBehaviour
 {
     public GameObject Player_Death;
+    public GameObject Item = null;
     public float moveSpeed = 5f;
-    public int HP = 10;
+    public int HP = 3; 
+    public float drop = 5f;
 
     void Start()
     {
@@ -18,6 +20,23 @@ public class LV2_Monster : MonoBehaviour
     {
         float moveY = moveSpeed * Time.deltaTime;
         transform.Translate(0, -moveY, 0);
+    }
+    public void Damage(int Attack)
+    {
+        HP -= Attack;
+        if (HP <= 0)
+        {
+            ItemDrop();
+            Destroy(gameObject);
+        }
+    }
+    public void ItemDrop()
+    {
+        float randomValue = Random.Range(0f, 100f);
+        if (randomValue <= drop)
+        {
+            Instantiate(Item, transform.position, Quaternion.identity);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

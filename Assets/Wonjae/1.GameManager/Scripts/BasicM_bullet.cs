@@ -7,6 +7,7 @@ public class BasicM_bullet : MonoBehaviour
     public GameObject target;
     public GameObject Player_Death;
     public float bSpeed = 3.0f;
+    public int m_Attack = 10;
 
     Vector2 dir;
     Vector2 dirNo;
@@ -23,7 +24,7 @@ public class BasicM_bullet : MonoBehaviour
         if (collision.tag == "Player")
         {
             Instantiate(Player_Death, transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Player>().Damage(m_Attack);
             Destroy(gameObject);
         }
     }
