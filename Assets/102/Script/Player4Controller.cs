@@ -55,7 +55,9 @@ public class Player4Controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+           
             HomingFire();
+            
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -86,7 +88,8 @@ public class Player4Controller : MonoBehaviour
 
     void HomingFire()
     {
-        if(isItem == true) { 
+      
+        if (isItem == true) { 
         Instantiate(HomingAmmo, transform.position, Quaternion.identity);
             Hac--;
             if (Hac == 0)
@@ -94,6 +97,7 @@ public class Player4Controller : MonoBehaviour
                 isItem = false;
             }
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

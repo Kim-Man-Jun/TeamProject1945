@@ -12,7 +12,7 @@ public class Boss4 : MonoBehaviour
     public Transform BulletPos2;
     public Transform BulletPos3;
     int flag = 1;
-    int speed = 3;
+    int speed = 2;
     public int HP;
     public GameObject Bullet;
     public GameObject BouncyBullet;

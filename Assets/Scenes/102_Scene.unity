@@ -727,7 +727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076386906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -797,7 +797,7 @@ MonoBehaviour:
   CurHp: 5
   isDead: 0
   ammo: {fileID: 1982419660453834304, guid: d206279ca82d1e648a0907ae8ff63b6e, type: 3}
-  HomingAmmo: {fileID: 1982419660453834304, guid: d206279ca82d1e648a0907ae8ff63b6e, type: 3}
+  HomingAmmo: {fileID: 3026927240931717419, guid: 1aa9441f3486dee45a481b02371f067a, type: 3}
   isItem: 0
   BulletPos: {fileID: 831488383}
   Hac: 0
