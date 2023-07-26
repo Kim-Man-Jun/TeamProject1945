@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2be92e5bd444214a9394f135cdce52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 50
   Speed: 2
   Bullet: {fileID: 4535051603984854631}
   HomingBullet: {fileID: 0}

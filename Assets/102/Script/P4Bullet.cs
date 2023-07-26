@@ -23,7 +23,7 @@ public class P4Bullet : MonoBehaviour
         {
             Speed = 4.0f;
         }
-
+        Destroy(gameObject, 0.8f);
     }
 
 
