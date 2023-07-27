@@ -16,6 +16,10 @@ public class Player4Controller : MonoBehaviour
     public Transform BulletPos;
     public int Hac;
     Animator ani;
+    public bool isDamaged = false;
+    public bool isNoHit = false;
+    public float noHitTime = 0; 
+    float overTime = 0;
     void Start()
     {
         CurHp = MaxHp;
@@ -80,6 +84,20 @@ public class Player4Controller : MonoBehaviour
         if (transform.position.y <= -4.3f)
             transform.position = new Vector3(transform.position.x,-4.3f, 0);
         Dead();
+        if(isDead == true) 
+        {
+            overTime += Time.deltaTime;
+        }
+        if (isDamaged == true)
+        {
+            noHitTime += Time.deltaTime;
+            if (noHitTime >= 1)
+            {
+                isNoHit = false;
+                noHitTime = 0;
+                isDamaged = false;
+            }
+        }
     }
     void GeneralFire()
     {
@@ -102,28 +120,52 @@ public class Player4Controller : MonoBehaviour
 
     void Dead()
     {
+        
         if (CurHp <= 0)
         {
             ani.SetBool("Dead", true);
             Destroy(gameObject, 1);
-   
+            isDead = true;
+            if (overTime >= 2)
+            {
+                Time.timeScale = 0.0f;
+            }
+
 
         }
     }
+    void SetDamage()
+    {
+        CurHp--;
+        isDamaged = true;
+        isNoHit = true;
+       
+
+    }
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Monster"))
         {
-            CurHp--;
+            if(isNoHit == false) 
+            { 
+            SetDamage();
+            }
         }
         if (collision.CompareTag("Boss"))
         {
-            CurHp--;
+            if (isNoHit == false)
+            {
+                SetDamage();
+            }
         }
 
         if (collision.CompareTag("EnemyBullet"))
         {
-            CurHp--;
+            if (isNoHit == false)
+            {
+                SetDamage();
+            }
         }
         if (collision.CompareTag("Item"))
         {
