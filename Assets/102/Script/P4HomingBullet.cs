@@ -81,7 +81,8 @@ public class P4HomingBullet : MonoBehaviour
             //플레이어 지우기
             // Destroy(collision.gameObject);
             //미사일 지우기
-            collision.gameObject.GetComponent<Monster4>().Damage(Attack);
+            //collision.gameObject.GetComponent<Monster4>().Damage(Attack);
+            collision.gameObject.GetComponent<Boss4>().Damage(Attack);
             Destroy(gameObject);
         }
 

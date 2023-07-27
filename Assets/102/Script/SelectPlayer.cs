@@ -16,7 +16,7 @@ public class SelectPlayer : MonoBehaviour
     public bool isMain = true; //메인이미지 활성화 되어있는지
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame

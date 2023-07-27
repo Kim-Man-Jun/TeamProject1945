@@ -79,7 +79,7 @@ public class Player4Controller : MonoBehaviour
             transform.position = new Vector3(transform.position.x,4.3f , 0);
         if (transform.position.y <= -4.3f)
             transform.position = new Vector3(transform.position.x,-4.3f, 0);
-
+        Dead();
     }
     void GeneralFire()
     {
@@ -100,13 +100,31 @@ public class Player4Controller : MonoBehaviour
         
     }
 
+    void Dead()
+    {
+        if (CurHp <= 0)
+        {
+            ani.SetBool("Dead", true);
+            Destroy(gameObject, 1);
+   
+
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Monster"))
         {
             CurHp--;
         }
+        if (collision.CompareTag("Boss"))
+        {
+            CurHp--;
+        }
 
+        if (collision.CompareTag("EnemyBullet"))
+        {
+            CurHp--;
+        }
         if (collision.CompareTag("Item"))
         {
           

@@ -80,12 +80,13 @@ public class P4Bullet : MonoBehaviour
         if (collision.CompareTag("Boss"))
         {
             //이펙트 생성하기
-          //  GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
+            //  GameObject go = Instantiate(effect, transform.position, Quaternion.identity);
             //이펙트 1초뒤에 지우기
             //Destroy(go, 1);
 
 
             //미사일 삭제
+            collision.gameObject.GetComponent<Boss4>().Damage(Attack);
             Destroy(gameObject);
 
         }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86b33ec42a9032540a633cc2fd7de555
+guid: 9e7673ded5f57e0419f33ab4a4d2d798
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_deathEF_0
+      name: Resource9_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 775fc0a4e90c650468805484924a2b2b
-      internalID: 435411074
+      spriteID: 9f71064ebb6fefb4bb52f38a53c6355a
+      internalID: -1231237588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_1
+      name: Resource9_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 194
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3b21d960a7de5a41ac5d73f9f4a9079
-      internalID: -483851725
+      spriteID: 176c2a6fade9fc6458c2473db7e21acc
+      internalID: 2825693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_2
+      name: Resource9_2
       rect:
         serializedVersion: 2
-        x: 80
+        x: 388
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff4eb220dc9f2234b914908586b58e55
-      internalID: -1745144591
+      spriteID: 3045f806b423f4d458b50a2f67344738
+      internalID: 1860496595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_3
+      name: Resource9_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 582
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19e80b76b87af4f46bad3c306aed2a27
-      internalID: -2025553554
+      spriteID: 80f97f943cedd4747ab13004d8194616
+      internalID: -2030294427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_4
+      name: Resource9_4
       rect:
         serializedVersion: 2
-        x: 160
+        x: 776
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1893bb0ec4e281e4886ac83b72ef500a
-      internalID: 1959021094
+      spriteID: a3803fc59a5e3d1448d8b870b8590232
+      internalID: 278231508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_5
+      name: Resource9_5
       rect:
         serializedVersion: 2
-        x: 200
+        x: 970
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5ca5822c92155a448f8395cc73d36f3
-      internalID: -1255183262
+      spriteID: f7a70d6b26ac61c40b48c1b3e6fd6455
+      internalID: -1413009817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_6
+      name: Resource9_6
       rect:
         serializedVersion: 2
-        x: 240
+        x: 1164
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eec5fac64b1591945bda8f4e1dd7e9ee
-      internalID: 1262514706
+      spriteID: 8901b8f8a5c92084abab186984708294
+      internalID: 1145616264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_deathEF_7
+      name: Resource9_7
       rect:
         serializedVersion: 2
-        x: 280
+        x: 1358
         y: 0
-        width: 40.3
-        height: 42
+        width: 194.375
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,50 +310,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4729a826eb342ed47ac7939e71f6eb40
-      internalID: -1892387802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_deathEF_8
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 40.3
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9f4b09043e43974c951963f9917afba
-      internalID: 665413154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_deathEF_9
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 0
-        width: 40.3
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23b6faa3d69cbc046998de95a42ce481
-      internalID: 646287363
+      spriteID: c57082538e2095b43a1c39e4e67d7b4d
+      internalID: -1348844283
       vertices: []
       indices: 
       edges: []
@@ -369,16 +327,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_deathEF_0: 435411074
-      Player_deathEF_1: -483851725
-      Player_deathEF_2: -1745144591
-      Player_deathEF_3: -2025553554
-      Player_deathEF_4: 1959021094
-      Player_deathEF_5: -1255183262
-      Player_deathEF_6: 1262514706
-      Player_deathEF_7: -1892387802
-      Player_deathEF_8: 665413154
-      Player_deathEF_9: 646287363
+      Resource9_0: -1231237588
+      Resource9_1: 2825693
+      Resource9_2: 1860496595
+      Resource9_3: -2030294427
+      Resource9_4: 278231508
+      Resource9_5: -1413009817
+      Resource9_6: 1145616264
+      Resource9_7: -1348844283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

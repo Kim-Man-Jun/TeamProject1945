@@ -13,7 +13,7 @@ public class Boss4 : MonoBehaviour
     public Transform BulletPos3;
     int flag = 1;
     int speed = 2;
-    public int HP;
+    public int HP = 1000;
     public GameObject Bullet;
     public GameObject BouncyBullet;
     public GameObject HomingBullet;
@@ -199,6 +199,16 @@ public class Boss4 : MonoBehaviour
             yield return new WaitForSeconds(attackrate);
 
 
+        }
+    }
+    public void Damage(int attack)
+    {
+        HP -= attack;
+
+        if (HP <= 0)
+        {
+           
+            Destroy(gameObject);
         }
     }
     void CreateBullet()
