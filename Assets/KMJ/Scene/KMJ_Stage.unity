@@ -743,9 +743,8 @@ GameObject:
   - component: {fileID: 445449065}
   - component: {fileID: 445449064}
   - component: {fileID: 445449066}
-  - component: {fileID: 445449067}
-  - component: {fileID: 445449070}
   - component: {fileID: 445449069}
+  - component: {fileID: 445449067}
   m_Layer: 0
   m_Name: BossHead
   m_TagString: BossParts
@@ -873,7 +872,19 @@ MonoBehaviour:
   - {fileID: 2486774176179043256, guid: 6c5e41fe996ea904caaef803a774cbb9, type: 3}
   - {fileID: 1214211252560577411, guid: 823cfd5dad1781e43a5ee53e6938e370, type: 3}
   - {fileID: 4049051130392965475, guid: 245812d90f746874896aeda9f5bb427f, type: 3}
+  - {fileID: 9167539537858777775, guid: d032def72991ca040be64598d7e2fa73, type: 3}
+  - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
+  - {fileID: 9167539537858777775, guid: d032def72991ca040be64598d7e2fa73, type: 3}
+  - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
+  - {fileID: 9167539537858777775, guid: d032def72991ca040be64598d7e2fa73, type: 3}
+  - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
   - {fileID: 939030294084369116, guid: ce9e816567b46d649b0fd13f9d1a58f5, type: 3}
+  Target: {x: 0, y: 0}
+  minX: -1.35
+  maxX: 1.35
+  minY: -20
+  maxY: -17.53
+  BossMovingSpeed: 5
 --- !u!50 &445449069
 Rigidbody2D:
   serializedVersion: 4
@@ -901,18 +912,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &445449070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445449063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b1ca03130aef34fa0eb5ed44574ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &452395186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1646,6 +1645,7 @@ GameObject:
   - component: {fileID: 842773573}
   - component: {fileID: 842773574}
   - component: {fileID: 842773575}
+  - component: {fileID: 842773576}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -1661,7 +1661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842773572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: -17.62, z: -0.0027525828}
+  m_LocalPosition: {x: 0.05, y: -18.19, z: -0.0027525828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1737,6 +1737,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6600049, y: 1.1852646}
   m_EdgeRadius: 0
+--- !u!114 &842773576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842773572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b1ca03130aef34fa0eb5ed44574ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &862913954
 PrefabInstance:
   m_ObjectHideFlags: 0

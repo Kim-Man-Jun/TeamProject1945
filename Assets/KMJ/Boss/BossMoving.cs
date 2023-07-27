@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BossMoving : MonoBehaviour
 {
@@ -13,7 +16,7 @@ public class BossMoving : MonoBehaviour
 
     //보스 뱀 움직임 관련
     public float distanceBetween = 0.2f;
-    public float Speed = 300;
+    public float Speed = 200;
     public float turnSpeed = 180;
     public List<GameObject> bodyParts = new List<GameObject>();
     List<GameObject> BossBody = new List<GameObject>();
@@ -22,18 +25,22 @@ public class BossMoving : MonoBehaviour
 
     Transform basicPos;
 
-    public Transform moveSpot;
+    //랜덤 무빙용 변수
+    public Vector2 Target;
     public float minX = -1.35f;
     public float maxX = 1.35f;
     public float minY = -20f;
     public float maxY = -17.53f;
 
+    public float BossMovingSpeed = 4;
+
+    //게임 오브젝트의 처음 위치 저장
     private void Awake()
     {
         basicPos = this.gameObject.transform;
     }
 
-    // Start is called before the first frame update
+    //애니메이터 컴포넌트와 보스 몸통 생성, 랜덤 움직임
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,9 +48,21 @@ public class BossMoving : MonoBehaviour
         //뱀 움직임 관련
         CreateBodyParts();
 
-        //보스 랜덤 움직임 코루틴
-        StartCoroutine("BossRandomMoving");
 
+        StartCoroutine("BossRandomMoving");
+    }
+
+    IEnumerator BossRandomMoving()
+    {
+        float rndX = Random.Range(minX, maxX);
+        float rndY = Random.Range(minY, maxY);
+
+        Target = new Vector2(rndX, rndY);
+
+        gameObject.transform.position = Vector2.MoveTowards(
+            transform.position, Target, BossMovingSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine("BossRandomMoving");
     }
 
     void CreateBodyParts()
@@ -138,6 +157,9 @@ public class BossMoving : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -20f, 0);
         }
 
+        gameObject.transform.position = Vector2.MoveTowards(
+            transform.position, Target, BossMovingSpeed * Time.deltaTime);
+        //왜 지우면 안되는지 모르겠음..
 
     }
 
@@ -161,8 +183,8 @@ public class BossMoving : MonoBehaviour
             for (int i = 1; i < BossBody.Count; i++)
             {
                 MarkerManager markM = BossBody[i - 1].GetComponent<MarkerManager>();
-                BossBody[i].transform.position = markM.markerList[0].position;
-                BossBody[i].transform.rotation = markM.markerList[0].rotation;
+                BossBody[i].transform.position = markM.markerList[i - 1].position;
+                BossBody[i].transform.rotation = markM.markerList[i - 1].rotation;
                 markM.markerList.RemoveAt(0);
             }
         }
@@ -183,27 +205,6 @@ public class BossMoving : MonoBehaviour
             }
         }
     }
-
-    //움직임 관련 코루틴
-    IEnumerator BossRandomMoving()
-    {
-
-        float BossMovingSpeed = 200;
-
-        float rndX = Random.Range(minX, maxX);
-        float rndY = Random.Range(minY, maxY);
-
-        moveSpot.position = new Vector2(rndX, rndY);
-
-        print(moveSpot.position);
-
-        transform.position = Vector2.MoveTowards(transform.position,
-            moveSpot.position, BossMovingSpeed * Time.deltaTime);
-
-        yield return new WaitForSeconds(1f);
-        StartCoroutine("BossRandomMoving");
-    }
-
 
     //각도 계산용
     public static float GetAngle(Vector2 vStart, Vector2 vEnd)
