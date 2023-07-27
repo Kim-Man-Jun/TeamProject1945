@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,11 +12,26 @@ public class BossMoving : MonoBehaviour
     public Vector2 BossVector;
 
     //보스 뱀 움직임 관련
-    public float Speed = 2;
+    public float distanceBetween = 0.2f;
+    public float Speed = 300;
     public float turnSpeed = 180;
     public List<GameObject> bodyParts = new List<GameObject>();
     List<GameObject> BossBody = new List<GameObject>();
 
+    float countUp = 0;
+
+    Transform basicPos;
+
+    public Transform moveSpot;
+    public float minX = -1.35f;
+    public float maxX = 1.35f;
+    public float minY = -20f;
+    public float maxY = -17.53f;
+
+    private void Awake()
+    {
+        basicPos = this.gameObject.transform;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,21 +39,63 @@ public class BossMoving : MonoBehaviour
         animator = GetComponent<Animator>();
 
         //뱀 움직임 관련
-        GameObject temp = Instantiate(bodyParts[0], transform.position,
-            transform.rotation, transform);
+        CreateBodyParts();
 
-        if (!temp.GetComponent<Rigidbody2D>())
-        {
-            temp.AddComponent<Rigidbody2D>();
-            temp.GetComponent<Rigidbody2D>().gravityScale = 0;
-        }
-
-        BossBody.Add(temp);
-
+        //보스 랜덤 움직임 코루틴
         StartCoroutine("BossRandomMoving");
+
     }
 
-    // Update is called once per frame
+    void CreateBodyParts()
+    {
+        if (BossBody.Count == 0)
+        {
+            GameObject temp1 = Instantiate(bodyParts[0], transform.position,
+                transform.rotation, transform);
+            if (!temp1.GetComponent<MarkerManager>())
+            {
+                temp1.AddComponent<MarkerManager>();
+            }
+            if (!temp1.GetComponent<Rigidbody2D>())
+            {
+                temp1.AddComponent<Rigidbody2D>();
+                temp1.GetComponent<Rigidbody2D>().gravityScale = 0;
+            }
+            BossBody.Add(temp1);
+            bodyParts.RemoveAt(0);
+        }
+
+        MarkerManager markM = BossBody[BossBody.Count - 1].
+            GetComponent<MarkerManager>();
+
+        if (countUp == 0)
+        {
+            markM.ClearMarkerList();
+        }
+        countUp += Time.deltaTime;
+
+        if (countUp >= distanceBetween)
+        {
+
+            GameObject temp = Instantiate(bodyParts[0], markM.markerList[0].position,
+                markM.markerList[0].rotation, transform);
+            if (!temp.GetComponent<MarkerManager>())
+            {
+                temp.AddComponent<MarkerManager>();
+            }
+            if (!temp.GetComponent<Rigidbody2D>())
+            {
+                temp.AddComponent<Rigidbody2D>();
+                temp.GetComponent<Rigidbody2D>().gravityScale = 0;
+            }
+
+            BossBody.Add(temp);
+            bodyParts.RemoveAt(0);
+            temp.GetComponent<MarkerManager>().ClearMarkerList();
+            countUp = 0;
+        }
+    }
+
     void Update()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -45,7 +103,6 @@ public class BossMoving : MonoBehaviour
         BossVector = GetComponent<Transform>().position;
 
         float angle = GetAngle(PlayerVector, BossVector);
-        print(angle);
 
         if (angle > 80 && angle < 100)
         {
@@ -63,35 +120,100 @@ public class BossMoving : MonoBehaviour
         {
             animator.Play("BossBack");
         }
+
+        if (transform.position.x <= -1.35f)
+        {
+            transform.position = new Vector3(-1.35f, transform.position.y, 0);
+        }
+        if (transform.position.x >= 1.35f)
+        {
+            transform.position = new Vector3(1.35f, transform.position.y, 0);
+        }
+        if (transform.position.y >= -17.54f)
+        {
+            transform.position = new Vector3(transform.position.x, -17.54f, 0);
+        }
+        if (transform.position.y <= -20f)
+        {
+            transform.position = new Vector3(transform.position.x, -20f, 0);
+        }
+
+
     }
 
     private void FixedUpdate()
     {
         BossMovement();
+        ManageBossBody();
     }
 
     void BossMovement()
     {
-        BossBody[0].GetComponent<Rigidbody2D>().velocity =
-            BossBody[0].transform.right * Speed * Time.deltaTime;
+        //BossBody[0].GetComponent<Rigidbody2D>().velocity = BossBody[0].transform.right * Speed * Time.deltaTime;
+        if (this.gameObject.transform != basicPos)
+        {
+            BossBody[0].transform.Rotate(new Vector3(0, 0, -turnSpeed
+                * Time.deltaTime));
+        }
+
+        if (BossBody.Count > 1)
+        {
+            for (int i = 1; i < BossBody.Count; i++)
+            {
+                MarkerManager markM = BossBody[i - 1].GetComponent<MarkerManager>();
+                BossBody[i].transform.position = markM.markerList[0].position;
+                BossBody[i].transform.rotation = markM.markerList[0].rotation;
+                markM.markerList.RemoveAt(0);
+            }
+        }
     }
 
+    void ManageBossBody()
+    {
+        if (bodyParts.Count > 0)
+        {
+            CreateBodyParts();
+        }
+        for (int i = 0; i < BossBody.Count; i++)
+        {
+            if (BossBody[i] == null)
+            {
+                BossBody.RemoveAt(i);
+                i = i - 1;
+            }
+        }
+    }
+
+    //움직임 관련 코루틴
     IEnumerator BossRandomMoving()
     {
-        int rndX = Random.Range(-1, 2);
-        int rndY = Random.Range(-1, 2);
 
-        //움직임은 수정할 예정
-        transform.Translate(rndX * Speed * Time.deltaTime, rndY * Speed * Time.deltaTime, 0);
+        float BossMovingSpeed = 200;
 
-        yield return new WaitForSeconds(2f);
+        float rndX = Random.Range(minX, maxX);
+        float rndY = Random.Range(minY, maxY);
+
+        moveSpot.position = new Vector2(rndX, rndY);
+
+        print(moveSpot.position);
+
+        transform.position = Vector2.MoveTowards(transform.position,
+            moveSpot.position, BossMovingSpeed * Time.deltaTime);
+
+        yield return new WaitForSeconds(1f);
         StartCoroutine("BossRandomMoving");
     }
 
 
+    //각도 계산용
     public static float GetAngle(Vector2 vStart, Vector2 vEnd)
     {
         Vector2 v = vEnd - vStart;          //변수 v 생성 
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
+
+    public void AddBodyParts(GameObject obj)
+    {
+        bodyParts.Add(obj);
     }
 }
