@@ -313,6 +313,7 @@ MonoBehaviour:
   OverPanel: {fileID: 591523856}
   ammotext: {fileID: 1973291765}
   lifetext: {fileID: 572525145}
+  overtime: 0
 --- !u!1 &362699024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1531,9 @@ MonoBehaviour:
   isItem: 0
   BulletPos: {fileID: 831488383}
   Hac: 0
+  isDamaged: 0
+  isNoHit: 0
+  noHitTime: 0
 --- !u!1 &1461300469
 GameObject:
   m_ObjectHideFlags: 0

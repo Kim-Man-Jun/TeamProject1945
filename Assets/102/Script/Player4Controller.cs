@@ -20,6 +20,8 @@ public class Player4Controller : MonoBehaviour
     public bool isNoHit = false;
     public float noHitTime = 0; 
     float overTime = 0;
+    bool isItem2 = false;
+  
     void Start()
     {
         CurHp = MaxHp;
@@ -63,7 +65,7 @@ public class Player4Controller : MonoBehaviour
             HomingFire();
             
         }
-
+        if(isItem2 == true) { 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = 0.5f;
@@ -74,7 +76,7 @@ public class Player4Controller : MonoBehaviour
             Time.timeScale = 1f;
             Speed = 10;
         }
-
+        }
         if (transform.position.x >= 8.6f)
             transform.position = new Vector3(8.6f, transform.position.y, 0);
         if (transform.position.x <= -8.6f)
@@ -96,6 +98,8 @@ public class Player4Controller : MonoBehaviour
                 isNoHit = false;
                 noHitTime = 0;
                 isDamaged = false;
+
+                GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
     }
@@ -139,7 +143,8 @@ public class Player4Controller : MonoBehaviour
         CurHp--;
         isDamaged = true;
         isNoHit = true;
-       
+
+        GetComponent<SpriteRenderer>().color = Color.red;
 
     }
   
@@ -190,6 +195,8 @@ public class Player4Controller : MonoBehaviour
         if (collision.CompareTag("Item2"))
         {
 
+            isItem2 = true;
+            Destroy(collision.gameObject);
         }
 
     }

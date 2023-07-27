@@ -10,7 +10,7 @@ public class Monster4 : MonoBehaviour
     public GameObject HomingBullet;
     public GameObject ItemLifeUp;
     public GameObject HomingAmmo;
-    public GameObject mijung;
+    public GameObject BulletTIme;
 
     public Transform BulletPos;
     public Transform BulletPos2;
@@ -58,7 +58,7 @@ public class Monster4 : MonoBehaviour
         }
         if (ItemRan == 2)
         { 
-            Instantiate(mijung, transform.position, Quaternion.identity);
+            Instantiate(BulletTIme, transform.position, Quaternion.identity);
         }
         
     }
@@ -72,7 +72,7 @@ public class Monster4 : MonoBehaviour
         if (HP <= 0)
         {
             int dropPer = Random.Range(0, 100);
-            if(dropPer > 50)
+            if(dropPer > 70)
             { 
             ItemDrop();
             }

@@ -11,6 +11,7 @@ public class Boss4 : MonoBehaviour
     public Transform BulletPos1;
     public Transform BulletPos2;
     public Transform BulletPos3;
+    public Transform ItemPos;
     int flag = 1;
     int speed = 2;
     public int HP = 1000;
@@ -19,7 +20,9 @@ public class Boss4 : MonoBehaviour
     public GameObject HomingBullet;
     public int PatternTime = 0;
     public bool isPattern4 = false;
-
+    public GameObject ItemLifeUp;
+    public GameObject HomingAmmo;
+    public GameObject BulletTime;
     IEnumerator Pt1;
     IEnumerator Pt2;
     IEnumerator Pt3;
@@ -34,7 +37,7 @@ public class Boss4 : MonoBehaviour
         Pt4 = Pattern4();
         StartCoroutine(Pt1);
         Invoke("TimeCount", 1);
-      
+        InvokeRepeating("ItemDrop", 0,20);
 
     }
 
@@ -56,10 +59,30 @@ public class Boss4 : MonoBehaviour
 
         transform.Translate(flag * speed * Time.deltaTime, 0, 0);
 
+       
 
 
     }
-
+    public void ItemDrop()
+    {
+     
+        int ItemRan = Random.Range(0, 3);
+        //아이템 생성
+        if (ItemRan == 0)
+        {
+            Instantiate(ItemLifeUp, ItemPos.transform.position, Quaternion.identity);
+            
+        }
+        if (ItemRan == 1)
+        {
+            Instantiate(HomingAmmo, ItemPos.transform.position, Quaternion.identity);
+        }
+        if (ItemRan == 2)
+        {
+            Instantiate(BulletTime, ItemPos.transform.position, Quaternion.identity);
+        }
+       
+    }
     void TimeCount()
     {
         PatternTime++;
