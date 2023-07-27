@@ -34,7 +34,21 @@ public class LHS_Player2Move : MonoBehaviour
         Physics2D.Linecast(transform.position, transform.position + (transform.up * 1.5f));
         Debug.DrawLine(transform.position, transform.position + (transform.up * 1.5f));
         #endregion
+        
+        Move();
 
+        //총알공격 -> 내 앞에 가져다 놓는다.
+        // = Input.GetKeyDown(KeyCode.Space)
+        if (Input.GetButtonDown("Jump"))
+        {
+            //GameObject bullt = Instantiate(bulletFactory,transform.position, Quaternion.identity); //자식오브젝트로 넣는다.
+            
+            LHS_Player2Bullet.isReturning = true;
+        }
+    }
+
+    void Move()
+    {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
@@ -86,15 +100,6 @@ public class LHS_Player2Move : MonoBehaviour
             }
             #endregion
         }
-
-        //총알공격 -> 내 앞에 가져다 놓는다.
-        // = Input.GetKeyDown(KeyCode.Space)
-        if (Input.GetButtonDown("Jump"))
-        {
-            GameObject bullt = Instantiate(bulletFactory,transform.position, Quaternion.identity);
-            
-            LHS_Player2Bullet.isReturning = true;
-        }
     }
 
     void Intro()
@@ -106,7 +111,7 @@ public class LHS_Player2Move : MonoBehaviour
             Vector3 endPos = new Vector3(0, -4, 0);
 
             //시작지점, 목표지점, 이동속도
-            transform.position = Vector3.MoveTowards(transform.position, endPos, 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, endPos, 0.05f);
 
             if (transform.position == endPos)
             {
