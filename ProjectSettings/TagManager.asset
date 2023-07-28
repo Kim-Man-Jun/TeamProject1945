@@ -5,11 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
-  - Boss
   - Item
-  - Item1
+  - Monster2
+  - Monster3
+  - Monster4
+  - Monster5
+  - Monster6
+  - Monster7
+  - Monster8
+  - Monster9
   - Item2
-  - EnemyBullet
+  - Item3
+  - Boss1
   layers:
   - Default
   - TransparentFX
@@ -17,8 +24,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Bouncy
-  - 
+  - Item
+  - PlayerDamage
   - 
   - 
   - 

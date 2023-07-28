@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float left_ss = -2.2f;
-    public float right_es = 2.2f;
+    public float left_ss = -2.3f;
+    public float right_es = 2.3f;
 
     public float StartTime = 1; //시작
     public float SpawnStop = 30;    //스폰 끝
@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (swi)
         {
-            yield return new WaitForSeconds(StartTime + 1);
+            yield return new WaitForSeconds(StartTime + 2);
             float createX = Random.Range(left_ss, right_es);
             Vector2 r = new Vector2(createX, transform.position.y);
             Instantiate(Monster, r, Quaternion.identity);
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (swi)
         {
-            yield return new WaitForSeconds(7);    //10초 딜레이
+            yield return new WaitForSeconds(7);  
             StartCoroutine("RandomSpawn2");
         }
     }
