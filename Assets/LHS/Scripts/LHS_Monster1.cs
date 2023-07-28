@@ -32,14 +32,14 @@ public class LHS_Monster1 : MonoBehaviour
         firePos = transform.Find("FirePos");
 
         //반복하는 총알발사
-        InvokeRepeating("CreateBullet", Delay, Delay);
+        InvokeRepeating("CreateBullet", 5, Delay);
     }
 
     void CreateBullet()
     {
         //총알생성
         Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
-    }
+    } 
 
     void Update()
     {
@@ -88,7 +88,8 @@ public class LHS_Monster1 : MonoBehaviour
         {
             //이동
             //※ 타겟 위치가 같기 때문에 겹치는 현상 발생 -> 어떻게 해야할까? (Layer충돌처리로 -> 그대신 플레이어랑 못함.. 그럼?)
-            transform.position = Vector3.Lerp(transform.position, target.transform.position, speed);
+            //transform.position = Vector3.Lerp(transform.position, target.transform.position, speed);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
         }
     }
 

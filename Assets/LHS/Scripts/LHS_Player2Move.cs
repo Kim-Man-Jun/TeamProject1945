@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 //이동, 애니메이션
@@ -12,6 +13,7 @@ public class LHS_Player2Move : MonoBehaviour
     //총알공장
     [Header("총알프리팹")]
     [SerializeField] GameObject bulletFactory;
+    GameObject bullet;
 
     Animator anim;
 
@@ -21,6 +23,7 @@ public class LHS_Player2Move : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
 
     void Update()
@@ -39,10 +42,18 @@ public class LHS_Player2Move : MonoBehaviour
 
         //총알공격 -> 내 앞에 가져다 놓는다.
         // = Input.GetKeyDown(KeyCode.Space)
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")) //※돌아오기전에는 한번 더 발사 못하게
         {
-            //GameObject bullt = Instantiate(bulletFactory,transform.position, Quaternion.identity); //자식오브젝트로 넣는다.
             
+            if(bullet == null)
+            {
+                //음..!
+                for(int i = 0; i < 2; i++)
+                {
+                    bullet = Instantiate(bulletFactory,transform.position, Quaternion.identity); //자식오브젝트로 넣는다
+                }
+            }
+
             LHS_Player2Bullet.isReturning = true;
         }
     }
@@ -111,7 +122,7 @@ public class LHS_Player2Move : MonoBehaviour
             Vector3 endPos = new Vector3(0, -4, 0);
 
             //시작지점, 목표지점, 이동속도
-            transform.position = Vector3.MoveTowards(transform.position, endPos, 0.05f);
+            transform.position = Vector3.MoveTowards(transform.position, endPos, 0.02f);
 
             if (transform.position == endPos)
             {
