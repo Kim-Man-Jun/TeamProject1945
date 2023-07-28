@@ -6,10 +6,9 @@ TagManager:
   tags:
   - Monster
   - Boss
-  - Item
-  - Item1
   - Item2
   - EnemyBullet
+  - Bullet
   layers:
   - Default
   - TransparentFX
