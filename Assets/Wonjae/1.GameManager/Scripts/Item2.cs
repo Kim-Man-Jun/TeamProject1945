@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item2 : MonoBehaviour
 {
     public float ItemVelocity = 10f;
     Rigidbody2D rb = null;
