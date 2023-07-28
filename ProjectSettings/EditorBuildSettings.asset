@@ -9,12 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/LHS_Scene.unity
-    guid: cc3d8b1b76486c346a8c5db6fd02cfda
+    path: Assets/KMJ/Scene/KMJ_Stage.unity
+    guid: e58af139245ddc2418117694aac467ea
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 4602f88a0314d834c8cab3d6edf0ebbc
-  - enabled: 1
-    path: Assets/Scenes/102_Scene.unity
-    guid: 7e9949a4e40b7f645b6a908527cd3c7b
+    path: Assets/KMJ/Scene/GameOver.unity
+    guid: 006fa2c0e975f3d4c8e341f57b539df1
   m_configObjects: {}

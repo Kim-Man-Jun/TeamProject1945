@@ -97,7 +97,7 @@ Transform:
   - {fileID: 9043289069869920381}
   - {fileID: 511828194178720535}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1571454867421354437
 SpriteRenderer:
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 434679d71b0ef494ebc8d45566e7e34c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 200
-  Speed: 2.3
+  Speed: 2.5
   Delay: 1
   ms: {fileID: 9043289069869920381}
   ms2: {fileID: 511828194178720535}
@@ -244,4 +244,5 @@ MonoBehaviour:
   BoomEffect: {fileID: 4747899915026876058, guid: da7893e116b25d6409a8bb06276125da, type: 3}
   Item: {fileID: 445288891495656554, guid: 1a244f68ab307084d879aec36d239da7, type: 3}
   Direction: 0
+  MovingTime: 0
   EnemyStart: 0

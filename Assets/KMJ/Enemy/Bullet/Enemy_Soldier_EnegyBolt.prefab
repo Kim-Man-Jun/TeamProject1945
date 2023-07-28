@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target_Player: {fileID: 0}
   Speed: 800
-  Power: 10
+  Power: 6
   BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
 --- !u!50 &4416805266622929207
 Rigidbody2D:

@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //¸÷ ÁÂ¿ì·Î ¿òÁ÷ÀÓ
         if (EnemyStart == true)
         {
             if (Direction == 1)
@@ -68,24 +69,27 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        //¸÷ ÀÏ¹ÝÀûÀÎ ÀÌµ¿
         transform.Translate(DirectionNum * Time.deltaTime, -Speed * Time.deltaTime, 0);
 
-        if (gameObject.transform.position.x > 2.6f)
+        //¸÷ÀÌ ¸Ê ¹ÛÀ¸·Î ³ª°¡¸é Á×À½
+        if (gameObject.transform.position.x > 2.8f)
         {
             Destroy(gameObject);
         }
 
-        if (gameObject.transform.position.x < -2.6f)
+        if (gameObject.transform.position.x < -2.8f)
         {
             Destroy(gameObject);
         }
 
-        if (gameObject.transform.position.y < -25f)
+        if (gameObject.transform.position.y < -25.5f)
         {
             Destroy(gameObject);
         }
     }
 
+    //ÀÏ¹Ý¸÷ ÃÑ½î±â
     void CreateBullet()
     {
         if (EnemyStart == true)
@@ -102,6 +106,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //ÀÏ¹Ý¸÷ µ¥¹ÌÁö Ã³¸®
     public void Damage(int attack)
     {
         HP -= attack;
@@ -112,10 +117,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //ÀÏ¹Ý¸÷ Á×°í ³­ µÚ ÆÇÁ¤
     private void OnDestroy()
     {
         GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
         Destroy(go, 0.5f);
+
+        
 
         if (Item != null)
         {

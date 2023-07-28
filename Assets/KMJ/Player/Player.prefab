@@ -68,7 +68,7 @@ Transform:
   - {fileID: 2965171642816140668}
   - {fileID: 2712045699699246046}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8161319712032049892
 SpriteRenderer:
@@ -164,8 +164,6 @@ MonoBehaviour:
   - {fileID: 2848107501152705692, guid: ecb9a4dfa58de0d419ed961000115267, type: 3}
   - {fileID: 8228774231693883416, guid: ec4dcb80db5d6a7499566578b111aaea, type: 3}
   pos1: {fileID: 6893835637681611911}
-  pos2: {fileID: 2965171642816140668}
-  pos3: {fileID: 2712045699699246046}
   BoomEffect: {fileID: 446816794201431680, guid: 36d23175c42f28e44b1cf207c38a5140, type: 3}
   CoolTime: 0
   CoolTimestatic: 0.2
@@ -201,7 +199,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030971527, y: 0.064154625}
+  m_Offset: {x: -0.030971527, y: 0.05201435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -212,7 +210,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26740074, y: 0.583601}
+  m_Size: {x: 0.26740074, y: 0.23561287}
   m_EdgeRadius: 0
 --- !u!50 &5009664391313273452
 Rigidbody2D:

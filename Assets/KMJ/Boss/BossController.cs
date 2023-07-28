@@ -33,16 +33,27 @@ public class BossController : MonoBehaviour
     float curTime2 = 0;
     float curTime3 = 0;
 
-    float Delay = 0;
-
-    public float BulletSpeed = 0;
-
+    //페이즈 진입시 뿌려주는 회복템
     public GameObject HpItem;
-    bool HpItemOnOff = true;
+    int Phase = 0;
+
+    //보스 등장 관련 변수들
+    public static int BossAppear = 0;
+    [SerializeField] GameObject textBossWarning;
+    [SerializeField] GameObject BossMaxHpBar;
+    [SerializeField] GameObject Boss;
+
+    private void Awake()
+    {
+        textBossWarning.SetActive(false);
+        BossMaxHpBar.SetActive(false);
+        Boss.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        //보스 체력 설정
         BossNowHp = BossMaxHp;
     }
 
@@ -87,6 +98,12 @@ public class BossController : MonoBehaviour
         //부채꼴로 쏘는 탄막
         if (BossNowHp <= 18000 && BossNowHp > 12000)
         {
+            //페이즈 구분
+            if (Phase == 0)
+            {
+                StartCoroutine("HpItemDrop");
+            }
+
             //FirePos 3번 발사 360도
             curTime += Time.deltaTime;
 
@@ -137,15 +154,16 @@ public class BossController : MonoBehaviour
                 curTime2 = 0;
             }
 
-            if (HpItemOnOff == true)
-            {
-                StartCoroutine("HpItemDrop");
-            }
         }
 
         //360도 탄막과 드문드문 쏘는 호밍탄막
         if (BossNowHp <= 12000 && BossNowHp > 6000)
         {
+            //페이즈 구분
+            if (Phase == 1)
+            {
+                StartCoroutine("HpItemDrop");
+            }
             //FirePos 3번 발사 스핀으로
             FirePos3.transform.Rotate(Vector3.forward * 300 * Time.deltaTime);
 
@@ -189,16 +207,16 @@ public class BossController : MonoBehaviour
                 BossHoming();
                 curTime3 = 0;
             }
+        }
 
-            if (HpItemOnOff == true)
+        //360도 쏜 다음 유도하는 탄막
+        if (BossNowHp <= 6000)
+        {
+            //페이즈 구분
+            if (Phase == 2)
             {
                 StartCoroutine("HpItemDrop");
             }
-        }
-
-        //360도 쏜 다음 유도하는 탄막으로(유도가 안됨)
-        if (BossNowHp <= 6000)
-        {
             curTime += Time.deltaTime;
 
             if (curTime >= 1f)
@@ -246,11 +264,6 @@ public class BossController : MonoBehaviour
                 StartCoroutine(BulletToTarget(Bullets));
                 curTime2 = 0;
             }
-
-            if (HpItemOnOff == true)
-            {
-                StartCoroutine("HpItemDrop");
-            }
         }
     }
 
@@ -261,9 +274,7 @@ public class BossController : MonoBehaviour
         {
             Instantiate(HpItem, FirePos3.transform.position, Quaternion.identity);
         }
-
-        HpItemOnOff = false;
-
+        Phase++;
         yield return null;
     }
 
@@ -273,6 +284,7 @@ public class BossController : MonoBehaviour
         Instantiate(Bullet2, FirePos1.position, Quaternion.identity);
     }
 
+    //플레이어 유도탄 코루틴
     IEnumerator BulletToTarget(IList<Transform> objects)
     {
         yield return new WaitForSeconds(0.6f);
@@ -291,19 +303,28 @@ public class BossController : MonoBehaviour
     }
 
 
+    //보스가 데미지를 입을 경우 실행되는 메서드
     public void Damage(int attack)
     {
         BossNowHp -= attack;
 
+        //보스가 맞을때마다 코루틴 실행
+        StartCoroutine("BossDamage");
+
+        //보스 체력이 0일때
         if (BossNowHp <= 0)
         {
+            //보스 체력바가 남을걸 대비해 아예 없어버림
             BossNowHpBar.fillAmount = 0;
 
+            //보스의 현재 스크립트를 찾아서
             BossController bossController = GetComponent<BossController>();
-
+            //없애버리면서 총알 발사 막기
             Destroy(bossController);
 
+            //노가다1번
             GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
+
             GameObject go1 = Instantiate(BoomEffect, new Vector3(transform.position.x + 1, transform.position.y + 1.3f),
                 Quaternion.identity);
             GameObject go2 = Instantiate(BoomEffect, new Vector3(transform.position.x - 1.1f, transform.position.y - 1.2f),
@@ -317,6 +338,7 @@ public class BossController : MonoBehaviour
             GameObject go6 = Instantiate(BoomEffect, new Vector3(transform.position.x - 2f, transform.position.y - 1.4f),
                 Quaternion.identity);
 
+            //노가다 2번
             Destroy(go, 3f);
             Destroy(go1, 3f);
             Destroy(go2, 3f);
@@ -326,5 +348,15 @@ public class BossController : MonoBehaviour
             Destroy(go6, 3f);
             Destroy(gameObject, 3f);
         }
+    }
+
+    IEnumerator BossDamage()
+    {
+        //현재 오브젝트에 달린 자식 오브젝트의 스프라이트 렌더러를 가져와서
+        //피격시 빨간색으로 점멸하는 효과
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+        yield return new WaitForSeconds(0.15f);
     }
 }

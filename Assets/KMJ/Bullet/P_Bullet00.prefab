@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 8
-  Attack: 4999
+  Attack: 100
   BoomEffect: {fileID: 1742205772126311545, guid: 80a1118b1f7b9954aaad24479785abdc, type: 3}
 --- !u!50 &3364548449172663320
 Rigidbody2D:

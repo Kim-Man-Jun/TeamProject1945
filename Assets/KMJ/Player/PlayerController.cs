@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -147,5 +148,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
         Destroy(go, 0.9f);
+        SceneManager.LoadScene("GameOver");
+
     }
 }
