@@ -16,7 +16,7 @@ public class SelectPlayer : MonoBehaviour
     public bool isMain = true; //메인이미지 활성화 되어있는지
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -109,14 +109,14 @@ public class SelectPlayer : MonoBehaviour
 
 
 
-        //if (SelectNum == 0)
-        //{
-        //    SceneManager.LoadScene("LHS_Scene");
-        //}
-        //if (SelectNum == 1)
-        //{
-        //    SceneManager.LoadScene("LHS_Scene");
-        //}
+        if (SelectNum == 0)
+        {
+            SceneManager.LoadScene("Wonjae");
+        }
+        if (SelectNum == 1)
+        {
+            SceneManager.LoadScene("KMJ_Stage");
+        }
 
 
         if (SelectNum == 2)
