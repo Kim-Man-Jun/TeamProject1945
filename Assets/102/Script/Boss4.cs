@@ -14,10 +14,12 @@ public class Boss4 : MonoBehaviour
     public Transform ItemPos;
     int flag = 1;
     int speed = 2;
+    float dTime;
     public int HP = 1000;
     public GameObject Bullet;
     public GameObject BouncyBullet;
     public GameObject HomingBullet;
+    public GameObject Explosive;
     public int PatternTime = 0;
     public bool isPattern4 = false;
     public GameObject ItemLifeUp;
@@ -59,8 +61,13 @@ public class Boss4 : MonoBehaviour
 
         transform.Translate(flag * speed * Time.deltaTime, 0, 0);
 
-       
 
+        dTime += Time.deltaTime;
+        if (dTime >= 1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            dTime = 0;
+        }
 
     }
     public void ItemDrop()
@@ -85,6 +92,8 @@ public class Boss4 : MonoBehaviour
     }
     void TimeCount()
     {
+        
+     
         PatternTime++;
         if(PatternTime == 1)
             
@@ -123,6 +132,7 @@ public class Boss4 : MonoBehaviour
             PatternTime = 0;
 
         }
+      
     }
   
     IEnumerator Pattern1()
@@ -227,10 +237,11 @@ public class Boss4 : MonoBehaviour
     public void Damage(int attack)
     {
         HP -= attack;
-
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+     
         if (HP <= 0)
         {
-           
+            Instantiate(Explosive, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

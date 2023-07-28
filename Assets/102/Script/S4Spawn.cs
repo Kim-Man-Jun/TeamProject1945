@@ -54,7 +54,7 @@ public class S4Spawn : MonoBehaviour
         swi2 = false;
         StopCoroutine("RandomSpawn2");
 
-        Vector3 pos = new Vector3(0, 4f, 0);
+        Vector3 pos = new Vector3(0, 3f, 0);
 
         //textBossWarning.SetActive(true);
         //보스출현

@@ -1792,7 +1792,7 @@ MonoBehaviour:
   es: 6.5
   StartTime: 1
   SpawnStop: 10
-  monster: {fileID: 1337948182183614290, guid: 76d0c562441c8c449947c3bb15dc29e9, type: 3}
+  monster: {fileID: 2154046952148476606, guid: c377adde299bdd748998190dedfc498a, type: 3}
   monster2: {fileID: 1337948182183614290, guid: 76d0c562441c8c449947c3bb15dc29e9, type: 3}
   Boss: {fileID: 1684639193931677087, guid: e9209d305a9a93c4fa66f3f2a7af79fe, type: 3}
 --- !u!1 &1744767559

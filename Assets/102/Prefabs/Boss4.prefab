@@ -229,8 +229,9 @@ MonoBehaviour:
   ItemPos: {fileID: 1812351818368085748}
   HP: 1000
   Bullet: {fileID: 8085359604064257420, guid: a9ddb9d4d0ac2674a97c17f7567d2c2e, type: 3}
-  BouncyBullet: {fileID: 4692083934306774406, guid: bf8b8276946a53446b55a66f51088e7f, type: 3}
+  BouncyBullet: {fileID: 2220606778530174880, guid: 831051dde50eb92498fef0e48ab39f20, type: 3}
   HomingBullet: {fileID: 1310485644373014291, guid: 644867823dd1cec449c0742945679a3f, type: 3}
+  Explosive: {fileID: 2991085349586101681, guid: 115749b77d0cb8f42ae68aa8cc0b2931, type: 3}
   PatternTime: 0
   isPattern4: 0
   ItemLifeUp: {fileID: 7469684049219254385, guid: 48ef57e5c0f620f4993f197ee35cabce, type: 3}

@@ -8,20 +8,24 @@ public class EHomingBullet4 : MonoBehaviour
     public float Speed = 3f;
     Vector2 dir;
     Vector2 dirNo;
-
-
+    public GameObject player;
 
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     void Start()
     {
+        if(player != null) { 
         //플레이어 태그로 찾기
         target = GameObject.FindGameObjectWithTag("Player");
         //A - B   플레이어 - 미사일    
         dir = target.transform.position - transform.position;
         //방향벡터만 구하기 단위벡터 1의크기로 만든다.
         dirNo = dir.normalized;
-
+        }
 
     }
 
@@ -30,6 +34,10 @@ public class EHomingBullet4 : MonoBehaviour
     {
 
         transform.Translate(dirNo * Speed * Time.deltaTime);
+        if (player == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
 

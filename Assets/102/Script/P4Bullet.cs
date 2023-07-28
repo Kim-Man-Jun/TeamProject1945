@@ -62,6 +62,7 @@ public class P4Bullet : MonoBehaviour
             //Destroy(collision.gameObject);
 
             collision.gameObject.GetComponent<Monster4>().Damage(Attack);
+           
 
 
             //이펙트 생성하기

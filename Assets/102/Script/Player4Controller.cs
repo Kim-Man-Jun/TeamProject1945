@@ -189,7 +189,7 @@ public class Player4Controller : MonoBehaviour
         if (collision.CompareTag("Item1"))
         {
             isItem = true;
-            Hac = 50;
+            Hac = 25;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Item2"))

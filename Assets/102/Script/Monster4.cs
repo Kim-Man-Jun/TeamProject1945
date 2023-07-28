@@ -11,13 +11,13 @@ public class Monster4 : MonoBehaviour
     public GameObject ItemLifeUp;
     public GameObject HomingAmmo;
     public GameObject BulletTIme;
-
+    Animator ani;
     public Transform BulletPos;
     public Transform BulletPos2;
-    public int Delay = 3;
+    public float Delay = 0.1f;
+    public GameObject Explosive;
     void Start()
     {
-
         //한번 호출
         Invoke("CreateBullet", Delay);
     }
@@ -48,7 +48,7 @@ public class Monster4 : MonoBehaviour
     {
         int ItemRan = Random.Range(0, 3);
         //아이템 생성
-        if(ItemRan == 0) 
+        if(ItemRan == 2) 
         {
             Instantiate(ItemLifeUp, transform.position, Quaternion.identity);
         }
@@ -56,7 +56,7 @@ public class Monster4 : MonoBehaviour
         {
             Instantiate(HomingAmmo, transform.position, Quaternion.identity);
         }
-        if (ItemRan == 2)
+        if (ItemRan == 0)
         { 
             Instantiate(BulletTIme, transform.position, Quaternion.identity);
         }
@@ -76,6 +76,7 @@ public class Monster4 : MonoBehaviour
             { 
             ItemDrop();
             }
+            Instantiate(Explosive, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
