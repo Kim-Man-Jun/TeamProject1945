@@ -278,9 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece377151465d2d49abe6a8f132d4214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
+  Item: {fileID: 317854930249500674, guid: f6701d48caf984f4b8cd95b79447a3ce, type: 3}
   H_Bullet: {fileID: 124564360532191565, guid: 5046bd787734b40448e331b8b9f50d49, type: 3}
+  Dead_Effect: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
   Delay: 0.3
   moveSpeed: 1
-  HP: 150
-  drop: 100
+  HP: 220
+  drop: 99

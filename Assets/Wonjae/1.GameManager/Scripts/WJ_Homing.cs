@@ -5,11 +5,21 @@ using UnityEngine;
 public class WJ_Homing : MonoBehaviour
 {
     public float BSpeed = 2.0f;
-    
-    // Update is called once per frame
+    public GameObject Player_Death;
+    public int m_Attack = 10;
+
     void Update()
     {
         transform.Translate(Vector3.down * BSpeed * Time.deltaTime);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            Instantiate(Player_Death, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<Player>().Damage(m_Attack);
+            Destroy(gameObject);
+        }
     }
     private void OnBecameInvisible()
     {

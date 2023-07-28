@@ -60,6 +60,18 @@ public class P_Bullet : MonoBehaviour
             collision.gameObject.GetComponent<Scuzy_Monster>().Damage(Attack);
             Destroy(gameObject);
         }
+        if (collision.tag == "Monster8")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<Lazer_Monster_wj>().Damage(Attack);
+            Destroy(gameObject);
+        }
+        if (collision.tag == "Boss1")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<Drop_Monster_wj>().Damage(Attack);
+            Destroy(gameObject);
+        }
 
     }
 

@@ -14,7 +14,9 @@ TagManager:
   - Monster7
   - Monster8
   - Monster9
-  - Monster10
+  - Item2
+  - Item3
+  - Boss1
   layers:
   - Default
   - TransparentFX

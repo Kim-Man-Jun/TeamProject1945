@@ -6,14 +6,25 @@ public class Player : MonoBehaviour
 {
     Animator anim;
     public GameObject[] bullet = null;
+    public GameObject Pos2Bullet = null;
+    public GameObject Pos3Bullet = null;
     public GameObject Dead_Effect;
+    //
     public Transform Pos;
+    public Transform Pos2;
+    public Transform Pos3;
     //
     public int HP = 30;
-    public int power = 0;
+    public int bPower = 0;
+    public int pPower = 0;
+    public float Delay = 1.0f;
     public float moveSpeed = 5;
-   
+
     //
+    private bool isPos2BulletEnalbed = false;
+    private bool isPos3BulletEnalbed = false;
+    private int bulletCount = 0;    //발사된 총알 개수 세는 변수
+
     void Start()
     {
         anim = GetComponent<Animator>();    
@@ -35,7 +46,17 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bullet[power], Pos.position, Quaternion.identity);
+            Instantiate(bullet[bPower], Pos.position, Quaternion.identity);
+            bulletCount++;
+
+            if (isPos2BulletEnalbed && isPos3BulletEnalbed && bulletCount >= 5)    //5발 발사후 pos2발사
+            {
+                Instantiate(Pos2Bullet, Pos2.position, Quaternion.identity);
+                Instantiate(Pos3Bullet, Pos3.position, Quaternion.identity);
+                bulletCount = 0;    //발사후 초기화
+            }
+            else Instantiate(bullet[bPower], Pos.position, Quaternion.identity);
+
         }
 
         if (transform.position.x >= 2.8f)
@@ -50,17 +71,25 @@ public class Player : MonoBehaviour
         transform.Translate(moveX, moveY, 0);
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Item")
         {
-            power += 1;
+            bPower += 1;
 
-            if(power >= 3)
+            if(bPower >= 6)
             {
-                power = 3;
+                bPower = 6;
             }
 
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Item3")
+        {
+            isPos2BulletEnalbed = true;
+            isPos3BulletEnalbed = true;
             Destroy(collision.gameObject);
         }
     }

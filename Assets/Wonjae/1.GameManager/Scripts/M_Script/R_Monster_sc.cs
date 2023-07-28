@@ -35,7 +35,7 @@ public class R_Monster_sc : MonoBehaviour
        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
     }
 
-    private void OnServerInitialized()
+    private void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

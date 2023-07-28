@@ -219,7 +219,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &1325300729130942284
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &1451286419351578949
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +628,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &2043486917332912911
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +848,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &3260979951379484454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &3858253506649478438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &4349497858955577806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8
 --- !u!1 &5858363995675254403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,4 +1941,4 @@ MonoBehaviour:
   Mbullet: {fileID: 4080297552991682597, guid: 462152d959f282542bb536d73b65acfd, type: 3}
   moveSpeed: 1
   Delay: 2
-  HP: 15
+  HP: 8

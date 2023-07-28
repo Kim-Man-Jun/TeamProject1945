@@ -8,6 +8,7 @@ public class WJ_Rotate_Attack : MonoBehaviour
 
     public GameObject Item = null;
     public GameObject H_Bullet;
+    public GameObject Dead_Effect;
     public float Delay = 0.5f;
     public float moveSpeed = 1f;
     public int HP = 120;
@@ -65,6 +66,7 @@ public class WJ_Rotate_Attack : MonoBehaviour
         HP -= Attack;
         if (HP <= 0)
         {
+            Instantiate(Dead_Effect, transform.position, Quaternion.identity);
             ItemDrop();
             Destroy(gameObject);
         }

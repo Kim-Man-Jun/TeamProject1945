@@ -125,10 +125,10 @@ MonoBehaviour:
   ms: {fileID: 4150935889489445792}
   Mbullet: {fileID: 124564360532191565, guid: 5046bd787734b40448e331b8b9f50d49, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
-  HP: 30
+  HP: 12
   moveSpeed: 1
   Delay: 1
-  drop: 5
+  drop: 2
   moveDirection: {x: 1, y: -1, z: 0}
 --- !u!61 &4150935889372244883
 BoxCollider2D:

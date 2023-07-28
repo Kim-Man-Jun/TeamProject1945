@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
     public float moveSpeed = 2f;
     public float Delay = 1f;
     public float drop = 58f;
-    
 
     void Start()
     {

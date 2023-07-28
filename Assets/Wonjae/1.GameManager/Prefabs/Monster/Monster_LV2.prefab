@@ -197,4 +197,4 @@ MonoBehaviour:
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
   moveSpeed: 3
   HP: 5
-  drop: 5
+  drop: 2
