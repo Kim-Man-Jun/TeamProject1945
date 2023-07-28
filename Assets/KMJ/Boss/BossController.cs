@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class BossController : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class BossController : MonoBehaviour
     float Delay = 0;
 
     public float BulletSpeed = 0;
+
+    public GameObject HpItem;
+    bool HpItemOnOff = true;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +102,7 @@ public class BossController : MonoBehaviour
 
                         go.transform.position = FirePos3.position;
 
-                        Destroy(go, 2f);
+                        Destroy(go, 5f);
 
                         Bullets.Add(go.transform);
 
@@ -123,7 +127,7 @@ public class BossController : MonoBehaviour
 
                         go.transform.position = FirePos4.position;
 
-                        Destroy(go, 2f);
+                        Destroy(go, 5f);
 
                         Bullets.Add(go.transform);
 
@@ -131,6 +135,11 @@ public class BossController : MonoBehaviour
                     }
                 }
                 curTime2 = 0;
+            }
+
+            if (HpItemOnOff == true)
+            {
+                StartCoroutine("HpItemDrop");
             }
         }
 
@@ -163,7 +172,7 @@ public class BossController : MonoBehaviour
 
                     go.transform.position = FirePos4.position;
 
-                    Destroy(go, 2f);
+                    Destroy(go, 5f);
 
                     Bullets.Add(go.transform);
 
@@ -180,6 +189,11 @@ public class BossController : MonoBehaviour
                 BossHoming();
                 curTime3 = 0;
             }
+
+            if (HpItemOnOff == true)
+            {
+                StartCoroutine("HpItemDrop");
+            }
         }
 
         //360도 쏜 다음 유도하는 탄막으로(유도가 안됨)
@@ -187,17 +201,42 @@ public class BossController : MonoBehaviour
         {
             curTime += Time.deltaTime;
 
-            if (curTime >= 2f)
+            if (curTime >= 1f)
+            {
+                //총알 오브젝트 수록
+                List<Transform> Bullets = new List<Transform>();
+
+                for (int i = 0; i < 360; i += 10)
+                {
+                    //생성
+                    GameObject go = Instantiate(Bullet1);
+                    //발사 위치는 firepos3
+                    go.transform.position = FirePos3.position;
+
+                    Destroy(go, 5f);
+
+                    Bullets.Add(go.transform);
+                    //z에 값이 변해야 회전하니 z에 i를 대입
+                    go.transform.rotation = Quaternion.Euler(0, 0, i);
+                }
+
+                StartCoroutine(BulletToTarget(Bullets));
+                curTime = 0;
+            }
+
+            curTime2 += Time.deltaTime;
+
+            if (curTime2 >= 0.8f)
             {
                 List<Transform> Bullets = new List<Transform>();
 
-                for (int i = 0; i < 360; i += 13)
+                for (int i = 0; i < 360; i += 20)
                 {
                     GameObject go = Instantiate(Bullet1);
 
-                    go.transform.position = FirePos3.position;
+                    go.transform.position = FirePos4.position;
 
-                    Destroy(go, 2f);
+                    Destroy(go, 5f);
 
                     Bullets.Add(go.transform);
 
@@ -205,9 +244,27 @@ public class BossController : MonoBehaviour
                 }
 
                 StartCoroutine(BulletToTarget(Bullets));
-                curTime = 0;
+                curTime2 = 0;
+            }
+
+            if (HpItemOnOff == true)
+            {
+                StartCoroutine("HpItemDrop");
             }
         }
+    }
+
+    //일정 체력 이하면 회복템 하나 떨굼 수정 필요
+    IEnumerator HpItemDrop()
+    {
+        if (HpItem != null)
+        {
+            Instantiate(HpItem, FirePos3.transform.position, Quaternion.identity);
+        }
+
+        HpItemOnOff = false;
+
+        yield return null;
     }
 
     //유도미사일 발사
@@ -218,18 +275,16 @@ public class BossController : MonoBehaviour
 
     IEnumerator BulletToTarget(IList<Transform> objects)
     {
-        yield return new WaitForSeconds(0.2f);
-        Debug.Log("!!!!!!!");
+        yield return new WaitForSeconds(0.6f);
+
         for (int i = 0; i < objects.Count; i++)
         {
-            objects[i].transform.Translate(Vector3.zero);
-
-            Vector2 dir = PlayerPos.transform.position
-                - objects[i].transform.position;
-
-            Vector2 dirNo = dir.normalized;
-
-            objects[i].transform.Translate(dirNo * BulletSpeed * Time.deltaTime);
+            //현재 총알의 위치에서 플레이어 위치의 벡터값을 구함
+            Vector3 targetDirection = PlayerPos.transform.position - objects[i].position;
+            //x,y 값을 조합하여 z방향 값으로 변형 후 ~도 단위로 변환
+            float angle = Mathf.Atan2(targetDirection.x, -targetDirection.y) * Mathf.Rad2Deg;
+            //오브젝트 이동
+            objects[i].rotation = Quaternion.Euler(0, 0, angle);
         }
 
         objects.Clear();
@@ -243,13 +298,33 @@ public class BossController : MonoBehaviour
         if (BossNowHp <= 0)
         {
             BossNowHpBar.fillAmount = 0;
-            Destroy(gameObject);
-        }
-    }       //공격 받을때 이벤트 처리
 
-    private void OnDestroy()
-    {
-        GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
-        Destroy(go, 0.5f);
-    }               //오브젝트가 터질때 처리
+            BossController bossController = GetComponent<BossController>();
+
+            Destroy(bossController);
+
+            GameObject go = Instantiate(BoomEffect, transform.position, Quaternion.identity);
+            GameObject go1 = Instantiate(BoomEffect, new Vector3(transform.position.x + 1, transform.position.y + 1.3f),
+                Quaternion.identity);
+            GameObject go2 = Instantiate(BoomEffect, new Vector3(transform.position.x - 1.1f, transform.position.y - 1.2f),
+                Quaternion.identity);
+            GameObject go3 = Instantiate(BoomEffect, new Vector3(transform.position.x - 1.6f, transform.position.y + 1.7f),
+                Quaternion.identity);
+            GameObject go4 = Instantiate(BoomEffect, new Vector3(transform.position.x + 1.2f, transform.position.y - 1.6f),
+                Quaternion.identity);
+            GameObject go5 = Instantiate(BoomEffect, new Vector3(transform.position.x - 1.4f, transform.position.y - 1.5f),
+                Quaternion.identity);
+            GameObject go6 = Instantiate(BoomEffect, new Vector3(transform.position.x - 2f, transform.position.y - 1.4f),
+                Quaternion.identity);
+
+            Destroy(go, 3f);
+            Destroy(go1, 3f);
+            Destroy(go2, 3f);
+            Destroy(go3, 3f);
+            Destroy(go4, 3f);
+            Destroy(go5, 3f);
+            Destroy(go6, 3f);
+            Destroy(gameObject, 3f);
+        }
+    }
 }

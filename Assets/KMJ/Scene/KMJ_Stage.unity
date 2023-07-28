@@ -878,6 +878,8 @@ MonoBehaviour:
   - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
   - {fileID: 9167539537858777775, guid: d032def72991ca040be64598d7e2fa73, type: 3}
   - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
+  - {fileID: 9167539537858777775, guid: d032def72991ca040be64598d7e2fa73, type: 3}
+  - {fileID: 3206195322327489942, guid: 0791a150fb489c54e8b91ef85ae5b6c4, type: 3}
   - {fileID: 939030294084369116, guid: ce9e816567b46d649b0fd13f9d1a58f5, type: 3}
   Target: {x: 0, y: 0}
   minX: -1.35
@@ -1689,9 +1691,10 @@ MonoBehaviour:
   FirePos2: {fileID: 1438107269}
   FirePos3: {fileID: 1294498931}
   FirePos4: {fileID: 1268767075}
-  BoomEffect: {fileID: 0}
+  BoomEffect: {fileID: 4747899915026876058, guid: da7893e116b25d6409a8bb06276125da, type: 3}
   PlayerPos: {fileID: 894786421}
   BulletSpeed: 2
+  HpItem: {fileID: 3552427811186055657, guid: a5cd765bc5b364946b6b970b9271579a, type: 3}
 --- !u!61 &842773575
 BoxCollider2D:
   m_ObjectHideFlags: 0
