@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6826043351043606652}
   - component: {fileID: 3364548449172663320}
   m_Layer: 0
-  m_Name: P_Bullet00
+  m_Name: P_Bullet00_SP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5134501128692711438
 SpriteRenderer:
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 5ebf896a06efd484e8f1dda3bdb9caf3, type: 3}
-  m_Color: {r: 0.4943396, g: 0.57918143, b: 1, a: 1}
+  m_Color: {r: 0.4943396, g: 0.57918143, b: 1, a: 0.69803923}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 8
-  Attack: 50
+  Attack: 15
   BoomEffect: {fileID: 1742205772126311545, guid: 80a1118b1f7b9954aaad24479785abdc, type: 3}
 --- !u!50 &3364548449172663320
 Rigidbody2D:

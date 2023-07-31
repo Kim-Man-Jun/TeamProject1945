@@ -26,6 +26,7 @@ public class ButtonAction : MonoBehaviour
         PlayerController.NowHP = 100;
         BossController.BossAppear = 0;
         BossController.BossNowHp = 20000;
+        BossController.BossClear = false;
 
         SceneManager.LoadScene("KMJ_Stage");
     }
