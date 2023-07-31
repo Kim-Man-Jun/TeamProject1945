@@ -13,10 +13,13 @@ public class LHS_Player2Move : MonoBehaviour
     //총알공장
     [Header("총알프리팹")]
     [SerializeField] GameObject bulletFactory;
-    GameObject bullet;
+    public int hp = 100;
 
+    GameObject bullet1;
+    GameObject bullet2;
+    
     Animator anim;
-
+    
     //player움직임 
     public bool startGame = false;
 
@@ -45,13 +48,16 @@ public class LHS_Player2Move : MonoBehaviour
         if (Input.GetButtonDown("Jump")) //※돌아오기전에는 한번 더 발사 못하게
         {
             
-            if(bullet == null)
+            if(bullet1 == null)
             {
-                //음..!
-                for(int i = 0; i < 2; i++)
+                //음..! 코드변경해야함
+                /*for(int i = 0; i < 2; i++)
                 {
-                    bullet = Instantiate(bulletFactory,transform.position, Quaternion.identity); //자식오브젝트로 넣는다
-                }
+                    bullet = Instantiate(bulletFactory,transform.position, Quaternion.identity); 
+                }*/
+
+                bullet1 = Instantiate(bulletFactory, transform.position, Quaternion.identity); 
+
             }
 
             LHS_Player2Bullet.isReturning = true;
@@ -128,6 +134,17 @@ public class LHS_Player2Move : MonoBehaviour
             {
                 startGame = true;
             }
+        }
+    }
+    
+    public void Damage(int attack)
+    {
+        hp -= attack;
+
+        if(hp < 0)
+        {
+            //게임 종료
+            Debug.Log("게임 종료");
         }
     }
 }

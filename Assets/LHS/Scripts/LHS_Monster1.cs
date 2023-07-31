@@ -11,7 +11,7 @@ public class LHS_Monster1 : MonoBehaviour
 {
     [Header("이동")]
     [SerializeField] float speed = 3;
-    [SerializeField] float length = 3.0f;
+    [SerializeField] float length = 3.0f; //거리
     [Header("발사")]     //※ 애니메이션마다 다른 위치에서 나오는?
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePos;
@@ -19,6 +19,7 @@ public class LHS_Monster1 : MonoBehaviour
     [Header("data")] //공격력이 필요? -> 모든 적들을 위해?
     [SerializeField] int hp = 100;
 
+    public GameObject effectfab;
     GameObject target;
     Animator anim;
      
@@ -98,9 +99,8 @@ public class LHS_Monster1 : MonoBehaviour
     {
         hp -= attack;
 
-        if(hp <0)
+        if(hp < 0)
         {
-            //폭발효과 생성? -> 총알에서 할지 
             DestroyEffect();
             Destroy(gameObject);
         }
@@ -109,6 +109,6 @@ public class LHS_Monster1 : MonoBehaviour
     //아직 미정
     void DestroyEffect()
     {
-
+        GameObject go = Instantiate(effectfab, transform.position, Quaternion.identity);
     }
 }

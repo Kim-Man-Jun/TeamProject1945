@@ -17,6 +17,7 @@ TagManager:
   - Item2
   - Item3
   - Boss1
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - UI
   - Item
   - PlayerDamage
-  - 
+  - Monster
   - 
   - 
   - 

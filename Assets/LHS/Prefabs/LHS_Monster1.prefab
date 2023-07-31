@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 444432428587797593}
   - component: {fileID: 3296369873577724005}
   - component: {fileID: 7677535081115072412}
-  - component: {fileID: 3651389373517361514}
+  - component: {fileID: 8040303170984545034}
   m_Layer: 8
   m_Name: LHS_Monster1
   m_TagString: Monster
@@ -61,12 +61,12 @@ Transform:
   m_GameObject: {fileID: 6601547863652242272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1923361627164509648}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1766687048362528140
 SpriteRenderer:
@@ -158,7 +158,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5221440455160229951, guid: 3e45cb24e4a251643b6319946f093d61, type: 3}
   firePos: {fileID: 0}
   Delay: 1
-  hp: 100
+  hp: 20
+  effectfab: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
 --- !u!61 &7677535081115072412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9807692, y: 1.2307693}
   m_EdgeRadius: 0
---- !u!50 &3651389373517361514
+--- !u!50 &8040303170984545034
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
