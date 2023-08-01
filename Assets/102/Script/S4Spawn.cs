@@ -25,12 +25,12 @@ public class S4Spawn : MonoBehaviour
     bool swi5 = false;
     bool bossSpawn = false;
     [SerializeField]
-    //GameObject textBossWarning; //보스 등장 텍스트 오브젝트
+    GameObject textBossWarning; //보스 등장 텍스트 오브젝트
 
     private void Awake()
     {
         //보스 등장 텍스트 비활성화
-        // textBossWarning.SetActive(false);
+         textBossWarning.SetActive(false);
 
     }
 
@@ -144,6 +144,7 @@ public class S4Spawn : MonoBehaviour
         {
             swi4 = false;
             swi5 = false;
+            textBossWarning.SetActive(true);
         }
     }
 
@@ -153,7 +154,7 @@ public class S4Spawn : MonoBehaviour
         {
             bossSpawn = true;
             if (bossSpawn == true) {
-
+                textBossWarning.SetActive(false);
                 Vector2 r6 = new Vector2(0, 9);
                 Instantiate(Boss, r6, Quaternion.identity);
                

@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     Animator animator;
     public float Speed = 2f;
-    public float MaxHP = 10000f;
-    public static float NowHP = 10000f;
+    public float MaxHP = 100f;
+    public static float NowHP = 100f;
     public Image NowHPBar;
 
     public GameObject[] Bullet;

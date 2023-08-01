@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+
 
 //1단계 적
 //플레이어를 따라다닌다 -> 일정한 간격을 둔다 (애니메이션)
