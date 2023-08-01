@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ButtonAction : MonoBehaviour
 {
-
+    AudioSource GameOver;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GameOver = GetComponent<AudioSource>();
+        GameOver.Play();
     }
 
     // Update is called once per frame
