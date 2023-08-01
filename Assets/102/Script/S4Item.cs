@@ -19,7 +19,7 @@ public class S4Item : MonoBehaviour
             flag *= -1;
         if (transform.position.x <= -6.5f)
             flag *= -1;
-        transform.Translate(flag * 3 * Time.deltaTime, 0, 0);
+        transform.Translate(flag * 6 * Time.deltaTime, 0, 0);
 
     }
 }

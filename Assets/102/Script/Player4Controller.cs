@@ -21,7 +21,7 @@ public class Player4Controller : MonoBehaviour
     public float noHitTime = 0; 
     float overTime = 0;
     bool isItem2 = false;
-  
+    
     void Start()
     {
         CurHp = MaxHp;
@@ -58,33 +58,34 @@ public class Player4Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) 
         {
             GeneralFire();
+            AudioManager4.instance.PlayBomerang();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
            
             HomingFire();
-            
+            AudioManager4.instance.PlayBomerang();
         }
         if(isItem2 == true) { 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = 0.5f;
-            Speed = 20;
+            Speed = 30;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             Time.timeScale = 1f;
-            Speed = 10;
+            Speed = 15;
         }
         }
-        if (transform.position.x >= 8.6f)
-            transform.position = new Vector3(8.6f, transform.position.y, 0);
-        if (transform.position.x <= -8.6f)
-            transform.position = new Vector3(-8.6f, transform.position.y, 0);
-        if (transform.position.y >= 4.3f)
-            transform.position = new Vector3(transform.position.x,4.3f , 0);
-        if (transform.position.y <= -4.3f)
-            transform.position = new Vector3(transform.position.x,-4.3f, 0);
+        if (transform.position.x >= 8f)
+            transform.position = new Vector3(8f, transform.position.y, 0);
+        if (transform.position.x <= -8f)
+            transform.position = new Vector3(-8f, transform.position.y, 0);
+        if (transform.position.y >= 13f)
+            transform.position = new Vector3(transform.position.x,13f , 0);
+        if (transform.position.y <= -13f)
+            transform.position = new Vector3(transform.position.x,-13f, 0);
         Dead();
         if(isDead == true) 
         {
@@ -174,8 +175,9 @@ public class Player4Controller : MonoBehaviour
         }
         if (collision.CompareTag("Item"))
         {
-          
-          
+            AudioManager4.instance.PlayHeal();
+
+
             if (CurHp == MaxHp)
             {
                 CurHp = MaxHp;
@@ -188,13 +190,14 @@ public class Player4Controller : MonoBehaviour
         }
         if (collision.CompareTag("Item1"))
         {
+            AudioManager4.instance.PlayGetItem();
             isItem = true;
             Hac = 25;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Item2"))
         {
-
+            AudioManager4.instance.PlayGetItem();
             isItem2 = true;
             Destroy(collision.gameObject);
         }

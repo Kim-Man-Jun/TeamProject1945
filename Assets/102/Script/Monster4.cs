@@ -11,7 +11,7 @@ public class Monster4 : MonoBehaviour
     public GameObject ItemLifeUp;
     public GameObject HomingAmmo;
     public GameObject BulletTIme;
-    Animator ani;
+    public Animator ani;
     public Transform BulletPos;
     public Transform BulletPos2;
     public float Delay = 0.1f;
@@ -71,8 +71,9 @@ public class Monster4 : MonoBehaviour
 
         if (HP <= 0)
         {
+            AudioManager4.instance.PlaySound();
             int dropPer = Random.Range(0, 100);
-            if(dropPer > 70)
+            if(dropPer > 80)
             { 
             ItemDrop();
             }

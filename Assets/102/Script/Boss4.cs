@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
@@ -13,7 +14,7 @@ public class Boss4 : MonoBehaviour
     public Transform BulletPos3;
     public Transform ItemPos;
     int flag = 1;
-    int speed = 2;
+    int speed = 4;
     float dTime;
     public int HP = 1000;
     public GameObject Bullet;
@@ -25,6 +26,7 @@ public class Boss4 : MonoBehaviour
     public GameObject ItemLifeUp;
     public GameObject HomingAmmo;
     public GameObject BulletTime;
+    public GameObject Bg2;
     IEnumerator Pt1;
     IEnumerator Pt2;
     IEnumerator Pt3;
@@ -40,7 +42,8 @@ public class Boss4 : MonoBehaviour
         StartCoroutine(Pt1);
         Invoke("TimeCount", 1);
         InvokeRepeating("ItemDrop", 0,20);
-
+        AudioManager4.instance.StopBg2();
+      
     }
 
     // Update is called once per frame
@@ -63,7 +66,7 @@ public class Boss4 : MonoBehaviour
 
 
         dTime += Time.deltaTime;
-        if (dTime >= 1)
+        if (dTime >= 0.5f)
         {
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             dTime = 0;
@@ -73,6 +76,7 @@ public class Boss4 : MonoBehaviour
     public void ItemDrop()
     {
      
+        
         int ItemRan = Random.Range(0, 3);
         //아이템 생성
         if (ItemRan == 0)
@@ -220,7 +224,7 @@ public class Boss4 : MonoBehaviour
     IEnumerator Pattern4()
     {
         float attackrate = 0.05f;
-        float angle = 3f;
+       
         while (true)
         {
             
@@ -243,6 +247,7 @@ public class Boss4 : MonoBehaviour
         {
             Instantiate(Explosive, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            SceneManager.LoadScene("StartScene");
         }
     }
     void CreateBullet()

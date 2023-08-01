@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class P4Bullet : MonoBehaviour
 {
-    public float Speed = 4.0f;
+    public float Speed = 20f;
     public int Attack = 10;
     public GameObject effect;
 
@@ -17,13 +17,15 @@ public class P4Bullet : MonoBehaviour
 
         if (Time.timeScale == 0.5f)
         {
-            Speed = 8.0f;
+            Speed = 16.0f;
+            Destroy(gameObject, 0.5f);
         }
         if (Time.timeScale == 1f)
         {
-            Speed = 4.0f;
+            Speed = 8.0f;
+            Destroy(gameObject, 1f);
         }
-        Destroy(gameObject, 0.8f);
+        
     }
 
 

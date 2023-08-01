@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 6650592984341025601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9064151673938241026}
@@ -227,15 +227,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 20
-  Speed: 2
-  Bullet: {fileID: 0}
-  HomingBullet: {fileID: 0}
+  Speed: 8
+  Bullet: {fileID: 4914278935041784659, guid: 9b4ff83c894a1af45a6e45f7722ef5f8, type: 3}
+  HomingBullet: {fileID: 971200113861687042, guid: 84e35cfdb9d53104f9ff0db4b3bdb6e8, type: 3}
   ItemLifeUp: {fileID: 7469684049219254385, guid: 48ef57e5c0f620f4993f197ee35cabce, type: 3}
   HomingAmmo: {fileID: 3215635878257097987, guid: 0a348063c8979fa4e9011613a918894e, type: 3}
   BulletTIme: {fileID: 3874930666205024847, guid: 20c8fe9c38353d7468a6bf573e9d9c4c, type: 3}
   BulletPos: {fileID: 9064151673938241026}
   BulletPos2: {fileID: 8791918856749526428}
-  Delay: 3
+  Delay: 50
   Explosive: {fileID: 2991085349586101681, guid: 115749b77d0cb8f42ae68aa8cc0b2931, type: 3}
 --- !u!1 &8499484053005038768
 GameObject:

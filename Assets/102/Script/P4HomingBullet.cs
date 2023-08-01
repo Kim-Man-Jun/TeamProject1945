@@ -47,11 +47,11 @@ public class P4HomingBullet : MonoBehaviour
     {
         if (Time.timeScale == 0.5f)
         {
-            Speed = 20.0f;
+            Speed = 32.0f;
         }
         if (Time.timeScale == 1f)
         {
-            Speed = 10.0f;
+            Speed = 16.0f;
         }
         if (target != null) { 
         transform.Translate(dirNo * Speed * Time.deltaTime);
