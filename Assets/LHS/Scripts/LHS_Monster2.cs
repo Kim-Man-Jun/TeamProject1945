@@ -21,7 +21,9 @@ public class LHS_Monster2 : MonoBehaviour
         //플레이어면 죽기
         if(collision.gameObject.CompareTag("Player"))
         {
-            //점수 깎기
+            //플레이어 체력 깎기
+            collision.gameObject.GetComponent<LHS_Player2Move>().Damage(attack);
+            Debug.Log("플레이어 충돌");
         }
     }
 
@@ -29,7 +31,7 @@ public class LHS_Monster2 : MonoBehaviour
     {
         hp -= attack;
 
-        if(hp < 0)
+        if(hp <= 0)
         {
             //아이템 생성 후
             Instantiate(item, transform.position, Quaternion.identity);

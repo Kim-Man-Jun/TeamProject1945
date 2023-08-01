@@ -10,23 +10,19 @@ public class LHS_Player2Move : MonoBehaviour
     //이동속도
     [Header("이동속도")]
     [SerializeField] float moveSpeed = 5f;
-    //총알공장
-    [Header("총알프리팹")]
-    [SerializeField] GameObject bulletFactory;
     public int hp = 100;
-
-    GameObject bullet1;
-    GameObject bullet2;
     
     Animator anim;
     
     //player움직임 
     public bool startGame = false;
 
+    //먹는 거 나한테 체크
+    //int power = 0;
+
     void Start()
     {
         anim = GetComponent<Animator>();
-        
     }
 
     void Update()
@@ -43,24 +39,11 @@ public class LHS_Player2Move : MonoBehaviour
         
         Move();
 
-        //총알공격 -> 내 앞에 가져다 놓는다.
-        // = Input.GetKeyDown(KeyCode.Space)
-        if (Input.GetButtonDown("Jump")) //※돌아오기전에는 한번 더 발사 못하게
+        //아이템 두개 먹을 시 
+        if(LHS_GameManager.instance.itemNum == 2)
         {
-            
-            if(bullet1 == null)
-            {
-                //음..! 코드변경해야함
-                /*for(int i = 0; i < 2; i++)
-                {
-                    bullet = Instantiate(bulletFactory,transform.position, Quaternion.identity); 
-                }*/
-
-                bullet1 = Instantiate(bulletFactory, transform.position, Quaternion.identity); 
-
-            }
-
-            LHS_Player2Bullet.isReturning = true;
+            //자식 총알 두번째꺼 키기
+            transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -115,6 +98,14 @@ public class LHS_Player2Move : MonoBehaviour
             {
                 transform.position = new Vector3(-2.45f, transform.position.y, 0);
             }
+            if(transform.position.y <= -4.5)
+            {
+                transform.position = new Vector3(transform.position.x, -4.5f, 0);
+            }
+            else if (transform.position.y >= 4.5)
+            {
+                transform.position = new Vector3(transform.position.x, 4.5f, 0);
+            }
             #endregion
         }
     }
@@ -141,10 +132,39 @@ public class LHS_Player2Move : MonoBehaviour
     {
         hp -= attack;
 
-        if(hp < 0)
+        if(hp <= 0)
         {
             //게임 종료
             Debug.Log("게임 종료");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Item"))
+        {
+            /*power += 1;
+
+            if (power >= 2)
+            {
+                power = 2;
+            }
+*/
+            LHS_GameManager.instance.itemNum++;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.CompareTag("Monster"))
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            //색 다시 바뀌게 
+            Invoke("ColorChange", 0.5f);
+        }
+    }
+
+    void ColorChange()
+    {
+        GetComponent<SpriteRenderer>().color = Color.white;
+
     }
 }

@@ -15,25 +15,32 @@ public class LHS_Monster1 : MonoBehaviour
     [Header("발사")]     //※ 애니메이션마다 다른 위치에서 나오는?
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePos;
+    [SerializeField] float startFire = 5f;
     [SerializeField] float Delay = 1f;
     [Header("data")] //공격력이 필요? -> 모든 적들을 위해?
     [SerializeField] int hp = 100;
 
     public GameObject effectfab;
+    public bool isMonster2 = false;
     GameObject target;
     Animator anim;
-     
+
+    Vector3 dir;
+    Vector3 targetDir;
+
     void Start()
     {
         //초기값저장
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
+        //dir = (target.transform.position - transform.position).normalized;
+        //targetDir = Vector3.down;
 
         //발사하는 곳 (코드로찾는 방법 - 자식)
         firePos = transform.Find("FirePos");
 
         //반복하는 총알발사
-        InvokeRepeating("CreateBullet", 5, Delay);
+        InvokeRepeating("CreateBullet", startFire, Delay);
     }
 
     void CreateBullet()
@@ -54,9 +61,10 @@ public class LHS_Monster1 : MonoBehaviour
         //벡터의 뺄셈 이용한 애니메이션 처리
         //플레이어가 어느 방향쪽에 있는지 체크 이후 애니메이션 바꾸기
         //※ 정면 보고 있는 애니메이션이 짧음 -> 해결
-        Vector3 dir = target.transform.position - transform.position;
+        targetDir = target.transform.position - transform.position;
+        Debug.Log(targetDir.y);
 
-        if (dir.x > 0.5f)
+        if (targetDir.x > 0.5f)
         {
             //+ 오른쪽으로 가야함
             anim.SetBool("Right", true);
@@ -65,11 +73,11 @@ public class LHS_Monster1 : MonoBehaviour
         {
             anim.SetBool("Right", false);
         }
-        if (dir.x < 0.5f)
+        if (targetDir.x < 0.5f)
         {
             anim.SetBool("Left", true);
 
-            if (dir.x >= -0.3f) // 정면 애니메이션
+            if (targetDir.x >= -0.3f) // 정면 애니메이션
             {
                 anim.SetBool("Left", false);
             }
@@ -82,15 +90,43 @@ public class LHS_Monster1 : MonoBehaviour
 
     void Move()
     {
-        // 플레이어와 거리를 두고 싶다
-        float d = Vector2.Distance(transform.position, target.transform.position);
-
-        if (length <= d)
+        //1단계 적 이동
+        if(!isMonster2)
         {
-            //이동
-            //※ 타겟 위치가 같기 때문에 겹치는 현상 발생 -> 어떻게 해야할까? (Layer충돌처리로 -> 그대신 플레이어랑 못함.. 그럼?)
-            //transform.position = Vector3.Lerp(transform.position, target.transform.position, speed);
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+            if (targetDir.y < 0.5f)
+            {
+                transform.Translate(targetDir.normalized * speed * Time.deltaTime);
+            }
+
+            // 플레이어가 위에 있다면 내려가기
+            else
+            {
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
+
+            //총 쏘기 멈추기
+            if (transform.position.y <= -2)
+            {
+                Debug.Log("멈추기");
+                CancelInvoke("CreateBullet");
+            }
+
+        }
+
+        //2단계 적 이동
+        else
+        {
+            // 플레이어와 거리를 두고 싶다
+            float d = Vector2.Distance(transform.position, target.transform.position);
+
+            if (length <= d)
+            {
+                transform.Translate(targetDir.normalized * speed * Time.deltaTime);
+                /*//이동
+                //※ 타겟 위치가 같기 때문에 겹치는 현상 발생 -> 어떻게 해야할까? (Layer충돌처리로 -> 그대신 플레이어랑 못함.. 그럼?)
+                //transform.position = Vector3.Lerp(transform.position, target.transform.position, speed);
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);*/
+            }
         }
     }
 

@@ -18,6 +18,15 @@ TagManager:
   - Item3
   - Boss1
   - Bullet
+  - Boss
+  - EnemyBullet
+  - Item1
+  - Enemy
+  - Bomb
+  - HpUp
+  - BossParts
+  - PowerUp
+  - Player2Bullet
   layers:
   - Default
   - TransparentFX
@@ -27,11 +36,11 @@ TagManager:
   - UI
   - Item
   - PlayerDamage
-  - Monster
   - 
   - 
   - 
-  - 
+  - Monster1
+  - Monster2
   - 
   - 
   - 
