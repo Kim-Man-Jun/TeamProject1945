@@ -35,6 +35,7 @@ public class FadeInOut : MonoBehaviour
         {
             a -= Time.deltaTime * fadeSpeed;
             panel.color = new Color(0, 0, 0, a);
+            Destroy(panel.gameObject ,2f);
             yield return null;
         }
     }

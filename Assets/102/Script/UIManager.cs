@@ -13,9 +13,14 @@ public class UIManager : MonoBehaviour
     public float overtime;
     void Start()
     {
-        
+        Screen.SetResolution(700, 1920, true);
+
     }
 
+    private void Awake()
+    {
+         
+    }
     // Update is called once per frame
     void Update()
     {

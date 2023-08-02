@@ -18,7 +18,10 @@ public class SelectPlayer : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
-
+    private void Awake()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     // Update is called once per frame
     void Update()
     {
