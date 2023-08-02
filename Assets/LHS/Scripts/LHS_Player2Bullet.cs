@@ -1,108 +1,111 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class LHS_Player2Bullet : MonoBehaviour
-{
-    //플레이어 위치에서 길이만큼 발사
-    //각도 설정은?
-    
-    // 다시 돌아올 타겟
+{    
+    public float speed = 5f;
+    public int Attack = 10;
+
+    //부메랑
+    public bool isReturning = false;
+    //나가고 있는지 체크
+    public bool isExiting = false;
+
+    // 다시 돌아올 타겟 (필요 없을 지도)
     GameObject player;
     GameObject target;
 
-    // 이동 속도
-    public float speed = 5f;
-    // 얘는 왜?
-    public float returnSpeedMultiplier = 2f;
-    // 돌아옴
-    public static bool isReturning = false;
-    //간격 위치 저장
-    private Vector2 initialPosition;
-
     public float moveDistance = 5f; //이동할 거리
-    Vector2 targetPosition;
-    //현재위치 저장
-    Vector2 currentPos;
-    Vector2 dirNo;
 
-    Vector2 radiusPos;
+    Vector2 initialPosition; //초기 위치 저장
+    Vector2 currentPos; //현재 위치 저장
 
-
-    float x;
-    float y;
-    float radius;
+    //가장 가까운 몬스터 찾기
+    public string monsterTag = "Monster";
+    //가까운적 (1,2)
+    Transform closestEnemy1;
+    Transform closestEnemy2;
+    //두번째 종알 나갈건지 체크
+    public bool isbullet2 = false;
+    //타겟 위치
+    Vector2 targetPosition1;
+    Vector2 targetPosition2;
 
     private void Start()
     {
-        //내 원래 위치 저장 초기위치 저장
-        //initialPosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
 
+        //적 찾기
+        //TargetTest();
+
+        //랜덤값으로 (보류)
         //MoveRandomDirection();
-        //AnimationCheck();
-        TargetTest();
-
-        //반지름구하기
-        float sizeOfCircle = 15f;
-        float radius = GetRadius(sizeOfCircle);
-        Debug.Log("원의 사이즈: " + sizeOfCircle + "원의 반지름 : " + radius);
-    }
-
-    float GetRadius(float size)
-
-    {
-        float pi = 3.14f;
-        float tmp = size / pi;
-        float radius = Mathf.Sqrt(tmp);
-        radiusPos = new Vector2(radius, radius);
-        return radius;
-    }
-
-    void MoveRandomDirection()
-    {
-        //※짧은건 왜 그런지 오류 찾아야함 //다른거랑 겹치기 싫음
-        //랜덤한 방향을 생성
-        //Vector2 randomDrection = Random.insideUnitSphere.normalized;
-        Vector2 randomDrection = Random.insideUnitSphere * 2; // 랜덤 말고
-        //적을 찾아서 발사 적 방향으로?
-
-        //randomDrection.y = 0f; //y축 이동하지 않도록 설정(수평이동?) -> 난 다 이동하고 싶다면!
-
-        targetPosition = new Vector2(transform.position.x, transform.position.y) + randomDrection.normalized * moveDistance;
-        //targetPosition = new Vector2(transform.position.x * -1 , transform.position.y) * moveDistance;
-
     }
 
     private void Update()
     {
-        AnimationCheck();
-
+        //플레이어 위치
         initialPosition = player.transform.position;
 
+        //현재 내 위치
         currentPos = transform.position;
 
-        //내 위치에서 랜덤한 방향으로 () 길이만큼 갔다가 다시 온다.
+        //※돌아오기전에는 한번 더 발사 못하게
+        if (Input.GetKeyDown(KeyCode.Z) && !isExiting)
+        {
+            isExiting = true;
+            isReturning = true;
+
+            //가장 가까운 적 찾기
+            FindMonster();
+
+            //충돌처리 키기
+            gameObject.GetComponent<CircleCollider2D>().enabled = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        //부메랑
         if (isReturning)
         {
             float step = speed * Time.deltaTime;
 
-            targetPosition = new Vector2(transform.position.x, transform.position.y) + dirNo;
-
-            //내위치에서 랜덤한 방향으로 () 거리만큼
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-
-            /* if(currentPos == targetPosition)
+            if(!isbullet2)
             {
-                isReturning = false;
-            }*/
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition1, step);
+
+                float distance = Vector3.Distance(currentPos, targetPosition1);
+
+                if (distance <= 0.5f)
+                {
+                    isReturning = false;
+                }
+            }
+
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition2, step);
+
+                /*if (currentPos == targetPosition2)
+                {
+                    isReturning = false;
+                }*/
+
+                float distance = Vector3.Distance(currentPos, targetPosition2);
+
+                if (distance <= 0.5f)
+                {
+                    isReturning = false;
+                }
+            }
         }
 
         else
         {
-            // 속도를 높여 초기 위치
+            // 속도를 높여 초기 위치(보류)
             //float step = speed * returnSpeedMultiplier * Time.deltaTime;
             float step = speed * Time.deltaTime;
 
@@ -110,63 +113,124 @@ public class LHS_Player2Bullet : MonoBehaviour
 
             if (currentPos == initialPosition)
             {
-                TargetTest();
+                isExiting = false;
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
+
                 //랜덤 값 다시 지정
                 /*Vector3 randomDrection = Random.insideUnitSphere.normalized;
                 targetPosition = new Vector3(transform.position.x, transform.position.y, 0) + randomDrection * moveDistance;*/
-                Destroy(gameObject);// 껐다 켰다로?
             }
         }
     }
 
-    void AnimationCheck()
-    {
-       
-        Animator anim = player.GetComponent<Animator>();
-        Debug.Log(anim);
-
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Right"))
-        {
-            Debug.Log("오른쪽");
-        }
-
-        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Up"))
-        {
-            Debug.Log("가운데");
-        }
-
-        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Left"))
-        {
-            Debug.Log("왼쪽");
-        }
-
-       /* Vector2 endDrection = new Vector2(x, y);
-        targetPosition = new Vector2(transform.position.x, transform.position.y) + endDrection.normalized * moveDistance;*/
-    }
-
+    //몬스터 찾아서 방향 정하기
     void TargetTest()
     {
         target = GameObject.FindGameObjectWithTag("Monster");
 
-        targetPosition = target.transform.position - transform.position;
-        //dirNo = targetPosition.normalized;
-
-        Debug.Log("확인 :" + targetPosition);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
+        if(target != null)
         {
-            Destroy(collision.gameObject);
+            //몬스터 방향
+            Vector2 dir = target.transform.position - transform.position;
+            //targetPosition = new Vector2(target.transform.position.x, target.transform.position.y);
+
+            targetPosition1 = new Vector2(transform.position.x, transform.position.y) + dir.normalized * moveDistance;
         }
     }
 
-    /*    private void OnTriggerEnter2D(Collider2D collision)
+    void FindMonster()
     {
-        if(collision.gameObject.CompareTag("Monster"))
+        closestEnemy1 = FindClosestMonsterWithTag(monsterTag);
+        if (closestEnemy1 != null)
         {
-            Destroy(collision.gameObject);
+            //방향을 정해주면 되는 거 아닌가? //일정한 길이로
+            Vector2 dir1 = closestEnemy1.position - transform.position;
+            targetPosition1 = new Vector2(transform.position.x, transform.position.y) + dir1.normalized * moveDistance;
+            //targetPosition1 = new Vector2(closestEnemy1.position.x, closestEnemy1.position.y);
+
+            closestEnemy2 = FindClosestMonsterWithTag(monsterTag, closestEnemy1);
+            if (closestEnemy2 != null)
+            {
+                Vector2 dir2 = closestEnemy2.position - transform.position;
+                targetPosition2 = new Vector2(transform.position.x, transform.position.y) + dir2.normalized * moveDistance;
+                //targetPosition2 = new Vector2(closestEnemy2.position.x, closestEnemy2.position.y);
+            }
         }
-    }*/
+
+        else
+        {
+            MoveRandomDirection();
+        }
+    }
+
+    //가장 가까운 적 찾기 기능
+    Transform FindClosestMonsterWithTag(string tag, Transform excludedEnemy = null)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
+        Transform closestEnemy = null;
+        float closetDistance = Mathf.Infinity;
+        Vector2 playerPosition = player.transform.position;
+
+        foreach(GameObject enemy in enemies)
+        {
+            if (enemy.transform == excludedEnemy) continue; // 이미 찾은 적이면 건너 뜁니다.
+
+            float distance = Vector2.Distance(enemy.transform.position, playerPosition);
+            if(distance < closetDistance)
+            {
+                closetDistance = distance;
+                closestEnemy = enemy.transform;
+            }
+        }
+        return closestEnemy;
+    }
+
+    //없으면 랜덤 방향!
+    void MoveRandomDirection()
+    {
+        //※짧은건 왜 그런지 오류 찾아야함 //다른거랑 겹치기 싫음
+        //랜덤한 방향을 생성
+        //Vector2 randomDrection = Random.insideUnitSphere.normalized;
+        Vector2 randomDrection = Random.insideUnitSphere * 2; 
+        //적을 찾아서 발사 적 방향으로?
+
+        //randomDrection.y = 0f; //y축 이동하지 않도록 설정(수평이동?) -> 난 다 이동하고 싶다면!
+        targetPosition1 = new Vector2(transform.position.x, transform.position.y) + randomDrection.normalized * moveDistance;
+        targetPosition2 = new Vector2(transform.position.x, transform.position.y) + randomDrection.normalized * moveDistance;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Monster1"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster1>().Damage(Attack);
+        }
+
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Monster2"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster2>().Damage(Attack);
+        }
+    }
+
+    //플레이어 애니메이션 확인
+    void AnimationCheck()
+    {
+        Animator anim = player.GetComponent<Animator>();
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Right"))
+        {
+            //Debug.Log("오른쪽");
+        }
+
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Up"))
+        {
+            //Debug.Log("가운데");
+        }
+
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player2_Left"))
+        {
+            //Debug.Log("왼쪽");
+        }
+    }
 }

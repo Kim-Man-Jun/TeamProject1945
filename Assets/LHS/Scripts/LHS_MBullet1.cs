@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class LHS_MBullet1 : MonoBehaviour
 {
     [SerializeField] float speed = 3;
+    public int attack = 10;
 
     GameObject target;
     Vector3 dir;
@@ -28,6 +29,8 @@ public class LHS_MBullet1 : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            //플레이어 체력 깎기
+            collision.gameObject.GetComponent<LHS_Player2Move>().Damage(attack);
             Destroy(gameObject);
             Debug.Log("플레이어 충돌");
         }
