@@ -10,7 +10,7 @@ public class TotalGm : MonoBehaviour
     public bool isClear2 = false;
     public bool isClear3 = false;
     public bool isClear4 = false;
-
+    public bool isMain = true; //메인이미지 활성화 되어있는지
     public string playingPlayer;
 
 

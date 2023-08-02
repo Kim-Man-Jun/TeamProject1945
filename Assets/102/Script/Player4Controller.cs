@@ -27,7 +27,7 @@ public class Player4Controller : MonoBehaviour
     {
         CurHp = MaxHp;
         ani = GetComponent<Animator>();
-        Debug.Log(TotalGm.instance.playingPlayer);
+       
     }
 
     // Update is called once per frame
@@ -133,15 +133,15 @@ public class Player4Controller : MonoBehaviour
         {
             ani.SetBool("Dead", true);
             Destroy(gameObject, 1);
-            isDead = true;
-            if (overTime >= 2)
-            {
-                Time.timeScale = 0.0f;
-            }
-            SceneManager.LoadScene("GameOver");
+            isDead =true;
 
+            if(overTime > 1) 
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
+   
     void SetDamage()
     {
         CurHp--;

@@ -53,31 +53,8 @@ public class ButtonAction : MonoBehaviour
 
     public void Restart()
     {
-       
-        if (TotalGm.instance.playingPlayer == "player1")
-        {
-            SceneManager.LoadScene("Wonjae");
-        }
-        if (TotalGm.instance.playingPlayer == "player2")
-        {
-            PlayerController.Bomb = 2;
-            PlayerController.WeaponPower = 0;
-            PlayerController.NowHP = 100;
-            BossController.BossAppear = 0;
-            BossController.BossNowHp = 20000;
-            BossController.BossClear = false;
 
-            SceneManager.LoadScene("KMJ_Stage");
-
-        }
-        if (TotalGm.instance.playingPlayer == "player3")
-        {
-            SceneManager.LoadScene("LHS_Scene");
-        }
-        if (TotalGm.instance.playingPlayer == "player4")
-        {
-            SceneManager.LoadScene("102_Scene");
-        }
+        SceneManager.LoadScene("StartScene");
     }
 
     public void Quit()

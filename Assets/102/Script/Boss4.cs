@@ -31,7 +31,7 @@ public class Boss4 : MonoBehaviour
     IEnumerator Pt2;
     IEnumerator Pt3;
     IEnumerator Pt4;
-
+    public GameObject clearpanel;
 
     void Start()
     {
@@ -247,7 +247,9 @@ public class Boss4 : MonoBehaviour
         {
             Instantiate(Explosive, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            SceneManager.LoadScene("StartScene");
+           
+         
+          
         }
     }
     void CreateBullet()

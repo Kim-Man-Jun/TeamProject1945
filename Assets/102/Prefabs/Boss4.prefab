@@ -239,6 +239,7 @@ MonoBehaviour:
   HomingAmmo: {fileID: 3215635878257097987, guid: 0a348063c8979fa4e9011613a918894e, type: 3}
   BulletTime: {fileID: 3874930666205024847, guid: 20c8fe9c38353d7468a6bf573e9d9c4c, type: 3}
   Bg2: {fileID: 0}
+  clearpanel: {fileID: 0}
 --- !u!82 &8028733707362507804
 AudioSource:
   m_ObjectHideFlags: 0
