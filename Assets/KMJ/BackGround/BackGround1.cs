@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackGround : MonoBehaviour
+public class BackGround1 : MonoBehaviour
 {
     public float scrollSpeed = 0.05f;
     Material material;
@@ -10,7 +10,7 @@ public class BackGround : MonoBehaviour
 
     private void Awake()
     {
-        Screen.SetResolution(620, 1920, true);
+        Screen.SetResolution(1080, 1920, true);
     }
 
     // Start is called before the first frame update
