@@ -22,7 +22,7 @@ public class ButtonAction : MonoBehaviour
 
     public void Restart()
     {
-        PlayerController.Bomb = 3;
+        PlayerController.Bomb = 2;
         PlayerController.WeaponPower = 0;
         PlayerController.NowHP = 100;
         BossController.BossAppear = 0;
