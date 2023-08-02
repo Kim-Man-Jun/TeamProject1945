@@ -56,8 +56,9 @@ public class WJ_Monster06 : MonoBehaviour
 
     IEnumerator Delayed_DropBoss()
     {
-        yield return new WaitForSeconds(50);
-        StartCoroutine("Create_DropBoss");
+        //yield return new WaitForSeconds(50);
+        yield return new WaitForSeconds(2);
+         StartCoroutine("Create_DropBoss");
     }
 
     void Update()

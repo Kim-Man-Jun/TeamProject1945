@@ -73,6 +73,27 @@ public class P_Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (collision.tag == "FinalBoss1")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<WJ_BossPart1>().Damage(Attack);
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "BossParts")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<WJ_Boss_ex>().Damage(Attack);
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "FinalBoss2")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<WJ_BossPart2>().Damage(Attack);
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnBecameInvisible()
