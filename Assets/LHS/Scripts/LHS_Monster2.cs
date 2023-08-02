@@ -8,8 +8,10 @@ public class LHS_Monster2 : MonoBehaviour
     public float speed = 5f;
     public int hp = 50;
     public int attack = 20;
+    public int addScore = 10;
 
     [SerializeField] GameObject item;
+    [SerializeField] GameObject effectfab;
 
     void Update()
     {
@@ -34,7 +36,9 @@ public class LHS_Monster2 : MonoBehaviour
         if(hp <= 0)
         {
             //아이템 생성 후
+            Instantiate(effectfab, transform.position, Quaternion.identity);
             Instantiate(item, transform.position, Quaternion.identity);
+            LHS_AudioManager.instance.MonsterDie();
 
             //죽기
             Destroy(gameObject);

@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LHS_GameManager : MonoBehaviour
 {
     public static LHS_GameManager instance;
+    [SerializeField] GameObject score;
+    Text scoreText;
+
+    int startNumber = 0;
+    int currentNumber;
 
     public int level = 1;
     public int itemNum;
@@ -16,6 +22,13 @@ public class LHS_GameManager : MonoBehaviour
             instance = this;
         }
     }
+    public void Start()
+    {
+        scoreText = score.gameObject.GetComponent<Text>();
+        currentNumber = startNumber;
+        UpdateNumberText();
+    }
+
 
     void Update()
     {
@@ -23,5 +36,17 @@ public class LHS_GameManager : MonoBehaviour
         {
             level = 2;
         }
+    }
+
+    public void ScoreAdd(int add)
+    {
+        startNumber += add;
+        //scoreText.text = startNumber.ToString();
+    }
+
+    void UpdateNumberText()
+    {
+        string formattedNumber = currentNumber.ToString("D8"); //8ÀÚ¸®
+        scoreText.text = formattedNumber;
     }
 }

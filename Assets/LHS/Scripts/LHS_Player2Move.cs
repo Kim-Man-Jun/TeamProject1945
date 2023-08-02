@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 //이동, 애니메이션
 //총알발사
@@ -10,7 +11,8 @@ public class LHS_Player2Move : MonoBehaviour
     //이동속도
     [Header("이동속도")]
     [SerializeField] float moveSpeed = 5f;
-    public int hp = 100;
+    public float hp = 100;
+    float maxHp = 100; 
     
     Animator anim;
     
@@ -19,6 +21,7 @@ public class LHS_Player2Move : MonoBehaviour
 
     //먹는 거 나한테 체크
     //int power = 0;
+    [SerializeField] GameObject uiHP;
 
     void Start()
     {
@@ -132,11 +135,18 @@ public class LHS_Player2Move : MonoBehaviour
     {
         hp -= attack;
 
-        if(hp <= 0)
+        Score();
+        if (hp <= 0)
         {
             //게임 종료
             Debug.Log("게임 종료");
         }
+    }
+
+    void Score()
+    {
+        float getHp = hp / maxHp;
+        uiHP.gameObject.GetComponent<Image>().fillAmount = getHp;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -151,6 +161,7 @@ public class LHS_Player2Move : MonoBehaviour
             }
 */
             LHS_GameManager.instance.itemNum++;
+            LHS_AudioManager.instance.ItemAdd();
             Destroy(collision.gameObject);
         }
 
@@ -165,6 +176,5 @@ public class LHS_Player2Move : MonoBehaviour
     void ColorChange()
     {
         GetComponent<SpriteRenderer>().color = Color.white;
-
     }
 }

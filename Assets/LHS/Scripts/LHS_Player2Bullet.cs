@@ -6,31 +6,35 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class LHS_Player2Bullet : MonoBehaviour
-{    
+{
+    [Header("무기속성")]
     public float speed = 5f;
     public int Attack = 10;
 
+    [Header("부메랑")]
     //부메랑
     public bool isReturning = false;
     //나가고 있는지 체크
     public bool isExiting = false;
+    //두번째 종알 나갈건지 체크
+    public bool isbullet2 = false;
+    //이동할 거리
+    public float moveDistance = 5f;
 
     // 다시 돌아올 타겟 (필요 없을 지도)
     GameObject player;
     GameObject target;
 
-    public float moveDistance = 5f; //이동할 거리
-
     Vector2 initialPosition; //초기 위치 저장
     Vector2 currentPos; //현재 위치 저장
 
-    //가장 가까운 몬스터 찾기
+    //가장 가까운 몬스터 찾기 // 굳이 ?
     public string monsterTag = "Monster";
+
     //가까운적 (1,2)
     Transform closestEnemy1;
     Transform closestEnemy2;
-    //두번째 종알 나갈건지 체크
-    public bool isbullet2 = false;
+
     //타겟 위치
     Vector2 targetPosition1;
     Vector2 targetPosition2;
