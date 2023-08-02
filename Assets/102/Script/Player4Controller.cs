@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player4Controller : MonoBehaviour
 {
@@ -26,11 +27,13 @@ public class Player4Controller : MonoBehaviour
     {
         CurHp = MaxHp;
         ani = GetComponent<Animator>();
+        Debug.Log(TotalGm.instance.playingPlayer);
     }
 
     // Update is called once per frame
     void Update()
     {
+    
         float moveX = Speed * Time.deltaTime * Input.GetAxis("Horizontal");
         float moveY = Speed * Time.deltaTime * Input.GetAxis("Vertical");
 
@@ -135,7 +138,7 @@ public class Player4Controller : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
             }
-
+            SceneManager.LoadScene("GameOver");
 
         }
     }
