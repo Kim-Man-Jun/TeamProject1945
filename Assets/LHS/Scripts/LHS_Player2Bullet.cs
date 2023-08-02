@@ -147,7 +147,6 @@ public class LHS_Player2Bullet : MonoBehaviour
             //방향을 정해주면 되는 거 아닌가? //일정한 길이로
             Vector2 dir1 = closestEnemy1.position - transform.position;
             targetPosition1 = new Vector2(transform.position.x, transform.position.y) + dir1.normalized * moveDistance;
-            Debug.Log(targetPosition1);
             //targetPosition1 = new Vector2(closestEnemy1.position.x, closestEnemy1.position.y);
 
             closestEnemy2 = FindClosestMonsterWithTag(monsterTag, closestEnemy1);
@@ -155,7 +154,6 @@ public class LHS_Player2Bullet : MonoBehaviour
             {
                 Vector2 dir2 = closestEnemy2.position - transform.position;
                 targetPosition2 = new Vector2(transform.position.x, transform.position.y) + dir2.normalized * moveDistance;
-                Debug.Log(targetPosition2);
                 //targetPosition2 = new Vector2(closestEnemy2.position.x, closestEnemy2.position.y);
             }
         }

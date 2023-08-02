@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+
 
 //1단계 적
 //플레이어를 따라다닌다 -> 일정한 간격을 둔다 (애니메이션)
@@ -62,7 +62,6 @@ public class LHS_Monster1 : MonoBehaviour
         //플레이어가 어느 방향쪽에 있는지 체크 이후 애니메이션 바꾸기
         //※ 정면 보고 있는 애니메이션이 짧음 -> 해결
         targetDir = target.transform.position - transform.position;
-        Debug.Log(targetDir.y);
 
         if (targetDir.x > 0.5f)
         {

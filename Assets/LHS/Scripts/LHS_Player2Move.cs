@@ -40,7 +40,7 @@ public class LHS_Player2Move : MonoBehaviour
         Move();
 
         //아이템 두개 먹을 시 
-        if(LHS_GameManager.instance.itemNum == 2)
+        if(LHS_GameManager.instance.itemNum == 1)
         {
             //자식 총알 두번째꺼 키기
             transform.GetChild(1).gameObject.SetActive(true);
