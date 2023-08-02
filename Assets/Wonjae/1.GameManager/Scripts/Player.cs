@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Player : MonoBehaviour
     public GameObject Pos2Bullet = null;
     public GameObject Pos3Bullet = null;
     public GameObject Dead_Effect;
+    SpriteRenderer spriteRenderer;
+    Rigidbody2D rb;
     //
     public Transform Pos;
     public Transform Pos2;
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour
     //
     private bool isPos2BulletEnalbed = false;
     private bool isPos3BulletEnalbed = false;
+    private bool isDamage = true;
     private int bulletCount = 0;    //발사된 총알 개수 세는 변수
 
     void Start()
@@ -56,7 +61,6 @@ public class Player : MonoBehaviour
                 bulletCount = 0;    //발사후 초기화
             }
             else Instantiate(bullet[bPower], Pos.position, Quaternion.identity);
-
         }
 
         if (transform.position.x >= 2.8f)
@@ -71,7 +75,6 @@ public class Player : MonoBehaviour
         transform.Translate(moveX, moveY, 0);
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Item")
@@ -82,7 +85,6 @@ public class Player : MonoBehaviour
             {
                 bPower = 6;
             }
-
             Destroy(collision.gameObject);
         }
 
@@ -102,5 +104,18 @@ public class Player : MonoBehaviour
             Instantiate(Dead_Effect,transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+        else
+        {
+
+        }
+    }
+
+    void OnDamaged(Vector2 targetPos)
+    {
+        gameObject.layer = 8;
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rb.AddForce(new Vector2(dirc,1)*7, ForceMode2D.Impulse);
     }
 }

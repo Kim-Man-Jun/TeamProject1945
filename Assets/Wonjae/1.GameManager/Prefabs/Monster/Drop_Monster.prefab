@@ -439,11 +439,16 @@ MonoBehaviour:
   Drop_Ms_Bullet: {fileID: 7415887176666363228, guid: de3f07c40d93c7a41825b29c0cafeee4, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
   DeadBoss: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
+  FinalBoss1: {fileID: 7991621581589838152, guid: f383435a04f897c4e86160727223062e, type: 3}
+  BossExplosion: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
   HP: 500
   drop: 15
   flag: 1
   moveSpeed: 1.2
   delay: 2
+  left_ss: -1
+  right_es: 1
+  StartTime: 1
 --- !u!61 &1043527877998974170
 BoxCollider2D:
   m_ObjectHideFlags: 0

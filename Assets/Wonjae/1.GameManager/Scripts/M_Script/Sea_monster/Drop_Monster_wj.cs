@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Drop_Monster_wj : MonoBehaviour
 {
@@ -10,25 +11,31 @@ public class Drop_Monster_wj : MonoBehaviour
     public GameObject Drop_Bullet;
     public GameObject Drop_Ms_Bullet;
     public GameObject Item = null;
-    public GameObject DeadBoss;
+    public GameObject DeadBoss; 
+    public GameObject FinalBoss1;
+    public GameObject BossExplosion;
     //
     public int HP = 350;
     public int drop = 15;
     public int flag = 1;
     public float moveSpeed = 2.5f;
     public float delay = 2.0f;
+    //
 
+    public float left_ss = -1f;
+    public float right_es = 1f;
+    public float StartTime = 1; //Ω√¿€
 
     void Start()
     {
         Invoke("CreateBullet", delay);
-        Invoke("CreateMS_Bullet", delay + 2);
+        Invoke("CreateMS_Bullet", delay + 2); 
     }
 
     void CreateBullet()
     {
         Instantiate(Drop_Bullet, ms1.transform.position, Quaternion.identity);
-        Invoke("CreateBullet", delay); ;
+        Invoke("CreateBullet", delay);
     }
 
     void CreateMS_Bullet()
@@ -64,14 +71,16 @@ public class Drop_Monster_wj : MonoBehaviour
 
     public void Damage(int Attack)
     {
+        SpawnBoss Spawn = FindObjectOfType<SpawnBoss>();
         HP -= Attack;
         if (HP <= 0)
         {
+            Instantiate(BossExplosion, transform.position, Quaternion.identity);
             ItemDrop();
             Destroy(gameObject);
+            Instantiate(FinalBoss1, transform.position, Quaternion.identity);    
         }
     }
-
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

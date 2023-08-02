@@ -13,7 +13,7 @@ public class Player_Missle_Wj : MonoBehaviour
 
     void Start()
     {
-        targets = new GameObject[8];
+        targets = new GameObject[9];
         targets[0] = GameObject.FindGameObjectWithTag("Monster");
         targets[1] = GameObject.FindGameObjectWithTag("Monster2");
         targets[2] = GameObject.FindGameObjectWithTag("Monster3");
@@ -22,6 +22,7 @@ public class Player_Missle_Wj : MonoBehaviour
         targets[5] = GameObject.FindGameObjectWithTag("Monster6");
         targets[6] = GameObject.FindGameObjectWithTag("Monster7");
         targets[7] = GameObject.FindGameObjectWithTag("Monster8");
+        targets[8] = GameObject.FindGameObjectWithTag("FinalBoss1");
 
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 1f);
@@ -94,6 +95,19 @@ public class Player_Missle_Wj : MonoBehaviour
             collision.gameObject.GetComponent<Lazer_Monster_wj>().Damage(Attack);
             Destroy(gameObject);
         }
+        if (collision.tag == "FinalBoss1") 
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<WJ_BossPart1>().Damage(Attack);
+            Destroy(gameObject);
+        }
+        if (collision.tag == "FinalBoss2")
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            collision.gameObject.GetComponent<WJ_BossPart2>().Damage(Attack);
+            Destroy(gameObject);
+        }
+
 
     }
 
