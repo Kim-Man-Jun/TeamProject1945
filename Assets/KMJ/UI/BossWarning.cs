@@ -8,11 +8,14 @@ public class BossWaring : MonoBehaviour
     [SerializeField]
     float lerptime = 0.2f;
     TextMeshProUGUI textBossWarning;
+    float curTime = 0f;
 
     private void Awake()
     {
         textBossWarning = GetComponent<TextMeshProUGUI>();
-        Destroy(textBossWarning, 2.5f);
+
+
+
     }
 
     private void OnEnable()
@@ -60,6 +63,11 @@ public class BossWaring : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        curTime += Time.deltaTime;
 
+        if (curTime >= 2.5f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
