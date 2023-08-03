@@ -247,9 +247,10 @@ public class Boss4 : MonoBehaviour
     {
         nowHP -= attack;
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-     
+        AudioManager4.instance.Playhit();
         if (nowHP <= 0)
         {
+            AudioManager4.instance.PlaySound();
             Instantiate(Explosive, transform.position, Quaternion.identity);
             TotalGm.instance.isClear4 = true;
             Destroy(gameObject);

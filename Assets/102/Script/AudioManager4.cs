@@ -10,6 +10,8 @@ public class AudioManager4 : MonoBehaviour
     public AudioClip soundHeal;
     public AudioClip soundBg2;
     public AudioClip gameClear;
+    public AudioClip hit;
+    public AudioClip super;
 
     AudioSource myAudio; //AudioSorce 컴포넌트를 변수로 담습니다.
     public static AudioManager4 instance;  //자기자신을 변수로 담습니다.
@@ -50,6 +52,14 @@ public class AudioManager4 : MonoBehaviour
    public void StopBg2() 
     {
         myAudio.Stop();
+    }
+    public void Playhit()
+    {
+        myAudio.PlayOneShot(hit);
+    }
+    public void PlaySuper()
+    {
+        myAudio.PlayOneShot(super);
     }
 
     void Update()

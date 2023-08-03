@@ -55,11 +55,16 @@ public class SelectPlayer : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow)) //아래키 누르면 내려감
         {
+            if(Input.GetKeyDown(KeyCode.Space) == false) { 
             SelectNum += 1;
+            }
         }
         if (Input.GetKeyDown(KeyCode.UpArrow)) //위키 누르면 올라감
         {
-            SelectNum -= 1;
+            if (Input.GetKeyDown(KeyCode.Space) == false)
+            {
+                SelectNum -= 1;
+            }
         }
         if (SelectNum == 0)  //0이면 1번 캐릭실행
         {
@@ -149,7 +154,7 @@ public class SelectPlayer : MonoBehaviour
                 {
                     adm.instance.PlaySound();
                 }
-                Invoke("SceneChanger",0.5f);
+                Invoke("SceneChanger",1f);
             }
         }
     }

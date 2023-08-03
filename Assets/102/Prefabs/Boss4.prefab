@@ -395,7 +395,7 @@ MonoBehaviour:
   BulletPos2: {fileID: 2697626979454306440}
   BulletPos3: {fileID: 5146177315315188191}
   ItemPos: {fileID: 6317460880105439699}
-  HP: 1000
+  HP: 2500
   nowHP: 0
   Bullet: {fileID: 8085359604064257420, guid: a9ddb9d4d0ac2674a97c17f7567d2c2e, type: 3}
   BouncyBullet: {fileID: 2220606778530174880, guid: 831051dde50eb92498fef0e48ab39f20, type: 3}
@@ -406,7 +406,7 @@ MonoBehaviour:
   isDead: 0
   ItemLifeUp: {fileID: 7469684049219254385, guid: 48ef57e5c0f620f4993f197ee35cabce, type: 3}
   HomingAmmo: {fileID: 3215635878257097987, guid: 0a348063c8979fa4e9011613a918894e, type: 3}
-  BulletTime: {fileID: 3874930666205024847, guid: 20c8fe9c38353d7468a6bf573e9d9c4c, type: 3}
+  BulletTime: {fileID: 8020162076325029893, guid: bd7199cf130a08d4597cc85adcf8f6a1, type: 3}
   Bg2: {fileID: 0}
 --- !u!82 &2934826973313762077
 AudioSource:

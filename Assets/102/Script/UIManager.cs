@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject player;
-    public Text ammotext;
-    public Text lifetext;
+    public Text homingammotext;
+    public Text superammotext;
     public float overtime;
     void Start()
     {
@@ -25,8 +25,8 @@ public class UIManager : MonoBehaviour
     {
         if (player != null)
         {
-            lifetext.text = GameObject.FindGameObjectWithTag("Player").GetComponent<Player4Controller>().CurHp.ToString();
-            ammotext.text = GameObject.FindGameObjectWithTag("Player").GetComponent<Player4Controller>().Hac.ToString();
+            superammotext.text = GameObject.FindGameObjectWithTag("Player").GetComponent<Player4Controller>().item2.ToString();
+            homingammotext.text = GameObject.FindGameObjectWithTag("Player").GetComponent<Player4Controller>().Hac.ToString();
 
          
         }
