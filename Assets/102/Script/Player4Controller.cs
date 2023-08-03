@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player4Controller : MonoBehaviour
 {
@@ -11,6 +10,8 @@ public class Player4Controller : MonoBehaviour
     public int CurHp;
     public bool isDead = false;
     public GameObject ammo;
+    public GameObject superammo;
+    public Image Hp;
     public GameObject HomingAmmo;
     public bool isItem = false;
     public Transform BulletPos;
@@ -18,19 +19,24 @@ public class Player4Controller : MonoBehaviour
     Animator ani;
     public bool isDamaged = false;
     public bool isNoHit = false;
-    public float noHitTime = 0; 
+    public float noHitTime = 0;
     float overTime = 0;
     bool isItem2 = false;
-    
+    public int item2 = 3;
+    public float ss = 6.5f;
+    public float es = -6.5f;
+    public int Sc = 0;
     void Start()
     {
         CurHp = MaxHp;
         ani = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Hp.fillAmount = (float)CurHp / (float)MaxHp;
         float moveX = Speed * Time.deltaTime * Input.GetAxis("Horizontal");
         float moveY = Speed * Time.deltaTime * Input.GetAxis("Vertical");
 
@@ -54,40 +60,46 @@ public class Player4Controller : MonoBehaviour
 
 
         transform.Translate(moveX, moveY, 0);
-        
-        if (Input.GetKeyDown(KeyCode.Z)) 
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            superAttack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             GeneralFire();
             AudioManager4.instance.PlayBomerang();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           
+
             HomingFire();
             AudioManager4.instance.PlayBomerang();
         }
-        if(isItem2 == true) { 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (isItem2 == true)
         {
-            Time.timeScale = 0.5f;
-            Speed = 30;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            Time.timeScale = 1f;
-            Speed = 15;
-        }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                Time.timeScale = 0.5f;
+                Speed = 30;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                Time.timeScale = 1f;
+                Speed = 15;
+            }
         }
         if (transform.position.x >= 8f)
             transform.position = new Vector3(8f, transform.position.y, 0);
         if (transform.position.x <= -8f)
             transform.position = new Vector3(-8f, transform.position.y, 0);
         if (transform.position.y >= 13f)
-            transform.position = new Vector3(transform.position.x,13f , 0);
+            transform.position = new Vector3(transform.position.x, 13f, 0);
         if (transform.position.y <= -13f)
-            transform.position = new Vector3(transform.position.x,-13f, 0);
+            transform.position = new Vector3(transform.position.x, -13f, 0);
         Dead();
-        if(isDead == true) 
+        if (isDead == true)
         {
             overTime += Time.deltaTime;
         }
@@ -111,32 +123,68 @@ public class Player4Controller : MonoBehaviour
 
     void HomingFire()
     {
-      
-        if (isItem == true) { 
-        Instantiate(HomingAmmo, transform.position, Quaternion.identity);
+
+        if (isItem == true)
+        {
+            Instantiate(HomingAmmo, transform.position, Quaternion.identity);
             Hac--;
             if (Hac == 0)
-            { 
+            {
                 isItem = false;
             }
         }
-        
+
     }
 
     void Dead()
     {
-        
+
         if (CurHp <= 0)
         {
-            ani.SetBool("Dead", true);
-            Destroy(gameObject, 1);
-            isDead = true;
-            if (overTime >= 2)
+            if (TotalGm.instance.isClear4 == false)
             {
-                Time.timeScale = 0.0f;
+                ani.SetBool("Dead", true);
+                Destroy(gameObject, 1);
+                isDead = true;
+
+                if (overTime > 1)
+                {
+                    SceneManager.LoadScene("GameOver");
+                }
             }
+        }
+    }
 
+    void superAttack()
+    {
+        if (item2 >= 3)
+        {
+            item2 -= 3;
+            Sc = 0;
+            AudioManager4.instance.PlaySuper();
+            createSuperAmmo();
+        }
+    }
 
+    void createSuperAmmo()
+    {
+        Sc++;
+        float ss = 9f;
+        float es = -8f;
+        for (int i = 0; i < 17; i++)
+        {
+            ss -= 1;
+
+            Vector2 r = new Vector2(ss, transform.position.y + 1);
+
+            Instantiate(superammo, r, Quaternion.identity);
+
+        }
+        Invoke("createSuperAmmo", 1);
+
+        if (Sc >= 3)
+        {
+            CancelInvoke("createSuperAmmo");
         }
     }
     void SetDamage()
@@ -148,14 +196,14 @@ public class Player4Controller : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.red;
 
     }
-  
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Monster"))
         {
-            if(isNoHit == false) 
-            { 
-            SetDamage();
+            if (isNoHit == false)
+            {
+                SetDamage();
             }
         }
         if (collision.CompareTag("Boss"))
@@ -182,7 +230,7 @@ public class Player4Controller : MonoBehaviour
             {
                 CurHp = MaxHp;
             }
-            else 
+            else
             {
                 CurHp++;
             }
@@ -198,7 +246,9 @@ public class Player4Controller : MonoBehaviour
         if (collision.CompareTag("Item2"))
         {
             AudioManager4.instance.PlayGetItem();
+
             isItem2 = true;
+            item2++;
             Destroy(collision.gameObject);
         }
 

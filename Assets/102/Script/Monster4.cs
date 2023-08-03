@@ -68,7 +68,7 @@ public class Monster4 : MonoBehaviour
     public void Damage(int attack)
     {
         HP -= attack;
-
+        AudioManager4.instance.Playhit();
         if (HP <= 0)
         {
             AudioManager4.instance.PlaySound();

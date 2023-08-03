@@ -8,6 +8,11 @@ public class BackGround1 : MonoBehaviour
     Material material;
     AudioSource SG;
 
+    private void Awake()
+    {
+        Screen.SetResolution(1080, 1920, true);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

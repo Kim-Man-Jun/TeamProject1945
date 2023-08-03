@@ -19,7 +19,7 @@ public class LHS_Wall : MonoBehaviour
         else
         {
             //플레이어는 삭제 되지 않음
-            if (!collision.CompareTag("Player2Bullet"))
+            if (!collision.CompareTag("Player") && !collision.CompareTag("Player2Bullet"))
             {
                 Destroy(collision.gameObject);
             }

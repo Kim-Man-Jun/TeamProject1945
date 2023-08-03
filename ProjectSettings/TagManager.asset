@@ -27,10 +27,8 @@ TagManager:
   - BossParts
   - PowerUp
   - Player2Bullet
-  - MoveSpot
   - FinalBoss1
   - FinalBoss2
-  - Lazer_pos
   layers:
   - Default
   - TransparentFX
@@ -45,12 +43,12 @@ TagManager:
   - 
   - Monster1
   - Monster2
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster3
+  - Monster4
+  - Wall
+  - Bullet
+  - Boss
   - 
   - 
   - 
