@@ -9,7 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 4602f88a0314d834c8cab3d6edf0ebbc
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/Wonjae.unity
     guid: d10c7357495c4354ab42cf87a1fccc15
   - enabled: 1
@@ -19,8 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/102_Scene.unity
     guid: 7e9949a4e40b7f645b6a908527cd3c7b
   - enabled: 1
-=======
->>>>>>> parent of c67b608 (08.02/최종)
     path: Assets/KMJ/Scene/KMJ_Stage.unity
     guid: e58af139245ddc2418117694aac467ea
   - enabled: 1

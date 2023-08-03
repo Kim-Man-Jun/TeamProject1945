@@ -231,7 +231,8 @@ MonoBehaviour:
   ms: {fileID: 7408673011761335895}
   ms2: {fileID: 0}
   bullet: {fileID: 339562632995087852, guid: 038f4c1fb12abfa48b3055e9aa527850, type: 3}
-  BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
+  BoomEffect: {fileID: 6654848258284154189, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
   Item: {fileID: 0}
   Direction: 0
+  MovingTime: 0
   EnemyStart: 0
