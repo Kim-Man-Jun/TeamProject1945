@@ -8,6 +8,7 @@ public class LHS_AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip monsterDie;
     [SerializeField] AudioClip itemAdd;
+    [SerializeField] AudioClip openDoor;
 
     AudioSource soundPlayer;
 
@@ -31,5 +32,11 @@ public class LHS_AudioManager : MonoBehaviour
     {
         soundPlayer.volume = 1;
         soundPlayer.PlayOneShot(itemAdd);
+    }
+
+    public void OpenDoor()
+    {
+        soundPlayer.volume = 1f;
+        soundPlayer.PlayOneShot(openDoor);
     }
 }

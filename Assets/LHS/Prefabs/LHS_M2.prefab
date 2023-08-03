@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LHS_Monster1
       objectReference: {fileID: 0}
+    - target: {fileID: 8987035662022894001, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
+      propertyPath: isMonster2
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -230,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LHS_Monster1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8987035662022894001, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
+      propertyPath: isMonster2
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -296,6 +304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LHS_Monster1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8987035662022894001, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
+      propertyPath: isMonster2
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -361,6 +373,10 @@ PrefabInstance:
     - target: {fileID: 7771489479591757871, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
       propertyPath: m_Name
       value: LHS_Monster1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987035662022894001, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
+      propertyPath: isMonster2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -497,6 +513,10 @@ PrefabInstance:
     - target: {fileID: 7771489479591757871, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
       propertyPath: m_Name
       value: LHS_Monster1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987035662022894001, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
+      propertyPath: isMonster2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

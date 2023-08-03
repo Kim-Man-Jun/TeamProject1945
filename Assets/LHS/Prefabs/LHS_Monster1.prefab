@@ -125,13 +125,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   length: 1
-  isMonster2: 0
+  isMonster2: 1
+  isIdle: 0
   bulletPrefab: {fileID: 5221440455160229951, guid: 3e45cb24e4a251643b6319946f093d61, type: 3}
   firePos: {fileID: 0}
   startFire: 1
   Delay: 1
   hp: 10
   attack: 3
+  addScore: 5
   effectfab: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
 --- !u!61 &5137210483728841924
 BoxCollider2D:

@@ -63,5 +63,11 @@ public class LHS_Spawn1 : MonoBehaviour
     void Monster4()
     {
         Instantiate(monster[2], new Vector2(-1.4f, transform.position.y), Quaternion.identity);
+        Invoke("Monster5", SpawnTime + 5);
+    }
+
+    void Monster5()
+    {
+        Instantiate(monster[3], transform.position, Quaternion.identity);
     }
 }

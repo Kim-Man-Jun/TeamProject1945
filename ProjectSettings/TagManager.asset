@@ -27,6 +27,8 @@ TagManager:
   - BossParts
   - PowerUp
   - Player2Bullet
+  - FinalBoss1
+  - FinalBoss2
   layers:
   - Default
   - TransparentFX
@@ -41,11 +43,11 @@ TagManager:
   - 
   - Monster1
   - Monster2
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Monster3
+  - Monster4
+  - Wall
+  - Bullet
   - 
   - 
   - 

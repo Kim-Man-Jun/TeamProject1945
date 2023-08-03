@@ -13,6 +13,7 @@ public class LHS_Monster1 : MonoBehaviour
     [SerializeField] float speed = 3;
     [SerializeField] float length = 3.0f; //거리
     public bool isMonster2 = false;
+    public bool isIdle = false;
 
     [Header("발사")]     //※ 애니메이션마다 다른 위치에서 나오는?
     [SerializeField] GameObject bulletPrefab;
@@ -116,6 +117,11 @@ public class LHS_Monster1 : MonoBehaviour
                 CancelInvoke("CreateBullet");
             }
 
+        }
+        
+        else if(isMonster2 && isIdle)
+        {
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
         }
 
         //2단계 적 이동

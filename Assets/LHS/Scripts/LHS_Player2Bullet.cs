@@ -206,6 +206,7 @@ public class LHS_Player2Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //나중에 상속으로 관리한다면?
         if (collision.gameObject.layer == LayerMask.NameToLayer("Monster1"))
         {
             collision.gameObject.GetComponent<LHS_Monster1>().Damage(Attack);
@@ -214,6 +215,16 @@ public class LHS_Player2Bullet : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Monster2"))
         {
             collision.gameObject.GetComponent<LHS_Monster2>().Damage(Attack);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Monster3"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster3>().Damage(Attack);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Monster4"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster4>().Damage(Attack);
         }
     }
 
