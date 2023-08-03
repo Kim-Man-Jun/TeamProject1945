@@ -7,10 +7,6 @@ public class ButtonAction : MonoBehaviour
 {
     AudioSource GameOver;
 
-    private void Awake()
-    {
-        Screen.SetResolution(620, 1920, true);
-    }
     // Start is called before the first frame update
     void Start()
     {

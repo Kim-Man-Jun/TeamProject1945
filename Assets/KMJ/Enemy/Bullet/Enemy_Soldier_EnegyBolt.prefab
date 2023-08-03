@@ -168,9 +168,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target_Player: {fileID: 0}
+<<<<<<< HEAD
   Speed: 300
   Power: 2
   BoomEffect: {fileID: 3254634741808728051, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
+=======
+  Speed: 800
+  Power: 3
+  BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
+>>>>>>> parent of c67b608 (08.02/최종)
 --- !u!50 &4416805266622929207
 Rigidbody2D:
   serializedVersion: 4
