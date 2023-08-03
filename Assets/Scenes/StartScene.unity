@@ -1032,9 +1032,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010e35152df419d4190bcc9133e77f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isClear1: 0
-  isClear2: 0
-  isClear3: 0
+  isClear1: 1
+  isClear2: 1
+  isClear3: 1
   isClear4: 0
   isMain: 1
   playingPlayer: 

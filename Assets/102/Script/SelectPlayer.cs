@@ -91,10 +91,26 @@ public class SelectPlayer : MonoBehaviour
         Select();
         Init();
         Cleardisplay();
+        if (TotalGm.instance.isClear1 == true)
+        {
+            clear1.SetActive(true);
+        }
+        if (TotalGm.instance.isClear2 == true)
+        {
+            clear2.SetActive(true);
+        }
+
+        if (TotalGm.instance.isClear3 == true)
+        {
+            clear3.SetActive(true);
+        }
         if (TotalGm.instance.isClear4 == true)
         {
             clear4.SetActive(true);
         }
+
+        
+        
     }
     void Init()
     {
