@@ -16,6 +16,8 @@ public class LHS_GameManager : MonoBehaviour
     public int level = 1;
     public int itemNum;
 
+    public int stageCheck = 0;
+
     private void Awake()
     {
         if(instance == null)

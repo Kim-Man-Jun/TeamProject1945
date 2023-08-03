@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 //다섯 간격으로 발사하고 싶음
-public class LHS_Spawn1 : MonoBehaviour
+public class LHS_Spawn2 : MonoBehaviour
 {
     //몬스터 생성 x 값
     public float ss = -2; //시작

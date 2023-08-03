@@ -126,7 +126,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5106560522789799835, guid: 9f753729792aafb4c94bfd0d023bb33e, type: 3}
   firePos: {fileID: 0}
   startFire: 1
-  Delay: 1
+  Delay: 0.2
   hp: 30
   attack: 20
   addScore: 20

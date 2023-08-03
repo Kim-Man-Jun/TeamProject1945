@@ -152,7 +152,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 965474094}
-  - {fileID: 445266953}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,9 +165,11 @@ GameObject:
   m_Component:
   - component: {fileID: 251142622}
   - component: {fileID: 251142621}
-  m_Layer: 0
+  - component: {fileID: 251142623}
+  - component: {fileID: 251142624}
+  m_Layer: 18
   m_Name: LHS_Boss
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,15 +234,74 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251142620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 652587472}
   - {fileID: 1608538666}
   - {fileID: 1974769992}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251142623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251142620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eda1f8db0651f478dabfa44c9ac057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  bulletPrefab: {fileID: 5106560522789799835, guid: a641fe60b56bf264db8084f269f524f0, type: 3}
+  firePos: {fileID: 652587472}
+  startFire: 1
+  Delay: 0.5
+  hp: 100
+  attack: 20
+  addScore: 5
+  effectfab: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
+  flag: 1
+  clampAngle: 14
+--- !u!58 &251142624
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251142620}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.27
 --- !u!1 &315290423
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +349,7 @@ MonoBehaviour:
   score: {fileID: 421150329}
   level: 0
   itemNum: 0
+  stageCheck: 1
 --- !u!1 &421150329
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.009400987, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -378,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445266953}
-  - component: {fileID: 445266952}
+  - component: {fileID: 445266954}
   m_Layer: 0
   m_Name: SpawnManger2
   m_TagString: Respawn
@@ -386,24 +447,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &445266952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445266951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3d9899266242ff48857c07430b63268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ss: -2
-  es: 2
-  StartTime: 1
-  SpawnTime: 0.5
-  monster:
-  - {fileID: 6601547863652242272, guid: 4800976a86cba064c8122da80c74e3ed, type: 3}
 --- !u!4 &445266953
 Transform:
   m_ObjectHideFlags: 0
@@ -412,13 +455,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445266951}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.055181365, y: 5.824966, z: -0.64351445}
+  m_LocalPosition: {x: 0, y: 1.0049658, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 80472982}
+  m_Father: {fileID: 965474094}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &445266954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445266951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e7373687c6bed4c9edd7cfd006148a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ss: -2
+  es: 2
+  StartTime: 1
+  SpawnTime: 10
+  monster: []
 --- !u!1001 &546398264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -628,6 +688,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &652587471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652587472}
+  m_Layer: 15
+  m_Name: FirePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &652587472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652587471}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.87, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 251142622}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965474093
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +747,8 @@ Transform:
   m_LocalPosition: {x: -0.055181365, y: 4.82, z: -0.64351445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 445266953}
   m_Father: {fileID: 80472982}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1398,7 +1490,7 @@ GameObject:
   - component: {fileID: 1608538666}
   - component: {fileID: 1608538665}
   - component: {fileID: 1608538664}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LHS_BossHand2_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1640,7 +1732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974769992}
   - component: {fileID: 1974769993}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LHS_BossEye_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

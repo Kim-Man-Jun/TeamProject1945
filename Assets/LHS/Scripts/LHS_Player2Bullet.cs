@@ -226,6 +226,11 @@ public class LHS_Player2Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<LHS_Monster4>().Damage(Attack);
         }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            collision.gameObject.GetComponent<LHS_Boss>().Damage(Attack);
+        }
     }
 
     //플레이어 애니메이션 확인
