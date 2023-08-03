@@ -144,7 +144,7 @@ public class Player4Controller : MonoBehaviour
    
     void SetDamage()
     {
-        CurHp--;
+        //CurHp--;
         isDamaged = true;
         isNoHit = true;
 

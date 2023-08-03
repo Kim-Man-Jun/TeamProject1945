@@ -1,6 +1,8 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class SelectPlayer : MonoBehaviour
 {
     public GameObject main; //메인화면 이미지
@@ -9,6 +11,12 @@ public class SelectPlayer : MonoBehaviour
     public GameObject s2; // 이하 동문
     public GameObject s3;
     public GameObject s4;
+    public GameObject clear1;
+    public GameObject clear2;
+    public GameObject clear3;
+    public GameObject clear4;
+
+
     public int SelectNum = 0; //캐릭 선택 번호 0 > 1번 따라서 3 > 4번
     bool isSound=true;
    
@@ -77,6 +85,11 @@ public class SelectPlayer : MonoBehaviour
         }
         Select();
         Init();
+        Cleardisplay();
+        if (TotalGm.instance.isClear4 == true)
+        {
+            clear4.SetActive(true);
+        }
     }
     void Init()
     {
@@ -118,10 +131,25 @@ public class SelectPlayer : MonoBehaviour
     {
         if (TotalGm.instance.isMain == false)
         {
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if(SelectNum == 0 && TotalGm.instance.isClear1 == false) { 
                 adm.instance.PlaySound();
-                Invoke("SceneChanger",1);
+                }
+                if (SelectNum == 1 && TotalGm.instance.isClear2 == false)
+                {
+                    adm.instance.PlaySound();
+                }
+                if (SelectNum == 2 && TotalGm.instance.isClear3 == false)
+                {
+                    adm.instance.PlaySound();
+                }
+                if (SelectNum == 3 && TotalGm.instance.isClear4 == false)
+                {
+                    adm.instance.PlaySound();
+                }
+                Invoke("SceneChanger",0.5f);
             }
         }
     }
@@ -132,25 +160,36 @@ public class SelectPlayer : MonoBehaviour
 
         if (SelectNum == 0)
         {
+           
             TotalGm.instance.playingPlayer = "player1";
             SceneManager.LoadScene("Wonjae");
         }
         if (SelectNum == 1)
         {
+           
             TotalGm.instance.playingPlayer = "player2";
             SceneManager.LoadScene("KMJ_Stage");
         }
         if (SelectNum == 2)
         {
+
             TotalGm.instance.playingPlayer = "player3";
             SceneManager.LoadScene("LHS_Scene");
         }
         if (SelectNum == 3)
-        {
-            TotalGm.instance.playingPlayer = "player4";
+        { 
+            if(TotalGm.instance.isClear4 == false) {
+                
+                TotalGm.instance.playingPlayer = "player4";
             SceneManager.LoadScene("102_Scene");
+            }
         }
     }
 
+    void Cleardisplay() 
+    {
+        
+        
+    }
     
 }

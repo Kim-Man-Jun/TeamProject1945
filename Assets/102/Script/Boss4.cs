@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
+using UnityEngine.UI;
+
 
 public class Boss4 : MonoBehaviour
 {
+    public Image BossHp;
     public Transform BulletPos;
     public Transform BulletPos1;
     public Transform BulletPos2;
@@ -16,13 +16,15 @@ public class Boss4 : MonoBehaviour
     int flag = 1;
     int speed = 4;
     float dTime;
-    public int HP = 1000;
+    public int HP = 15000;
+    public int nowHP;
     public GameObject Bullet;
     public GameObject BouncyBullet;
     public GameObject HomingBullet;
     public GameObject Explosive;
     public int PatternTime = 0;
     public bool isPattern4 = false;
+    public bool isDead;
     public GameObject ItemLifeUp;
     public GameObject HomingAmmo;
     public GameObject BulletTime;
@@ -31,7 +33,7 @@ public class Boss4 : MonoBehaviour
     IEnumerator Pt2;
     IEnumerator Pt3;
     IEnumerator Pt4;
-    public GameObject clearpanel;
+
 
     void Start()
     {
@@ -43,13 +45,16 @@ public class Boss4 : MonoBehaviour
         Invoke("TimeCount", 1);
         InvokeRepeating("ItemDrop", 0,20);
         AudioManager4.instance.StopBg2();
-      
+        isDead = false;
+        
+        HP = 1500;
+        nowHP = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        BossHp.fillAmount = (float)nowHP / (float)HP;
         if(isPattern4 == true) 
         {
             BulletPos.Rotate(0, 0, 3);
@@ -240,18 +245,21 @@ public class Boss4 : MonoBehaviour
     }
     public void Damage(int attack)
     {
-        HP -= attack;
+        nowHP -= attack;
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
      
-        if (HP <= 0)
+        if (nowHP <= 0)
         {
             Instantiate(Explosive, transform.position, Quaternion.identity);
+            TotalGm.instance.isClear4 = true;
             Destroy(gameObject);
            
+
          
           
         }
     }
+  
     void CreateBullet()
     {
         Instantiate(Bullet, BulletPos.transform.position, BulletPos.transform.rotation);
