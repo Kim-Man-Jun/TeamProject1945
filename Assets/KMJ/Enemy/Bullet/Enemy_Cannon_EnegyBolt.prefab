@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target_Player: {fileID: 0}
-  Speed: 1000
+  Speed: 500
   Power: 5
-  BoomEffect: {fileID: 1742205772126311545, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
+  BoomEffect: {fileID: 3254634741808728051, guid: 4a85fbebe1bb0214fb115d5a9c42457a, type: 3}
 --- !u!82 &-7603103759050174126
 AudioSource:
   m_ObjectHideFlags: 0
