@@ -6,31 +6,35 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class LHS_Player2Bullet : MonoBehaviour
-{    
+{
+    [Header("무기속성")]
     public float speed = 5f;
     public int Attack = 10;
 
+    [Header("부메랑")]
     //부메랑
     public bool isReturning = false;
     //나가고 있는지 체크
     public bool isExiting = false;
+    //두번째 종알 나갈건지 체크
+    public bool isbullet2 = false;
+    //이동할 거리
+    public float moveDistance = 5f;
 
     // 다시 돌아올 타겟 (필요 없을 지도)
     GameObject player;
     GameObject target;
 
-    public float moveDistance = 5f; //이동할 거리
-
     Vector2 initialPosition; //초기 위치 저장
     Vector2 currentPos; //현재 위치 저장
 
-    //가장 가까운 몬스터 찾기
+    //가장 가까운 몬스터 찾기 // 굳이 ?
     public string monsterTag = "Monster";
+
     //가까운적 (1,2)
     Transform closestEnemy1;
     Transform closestEnemy2;
-    //두번째 종알 나갈건지 체크
-    public bool isbullet2 = false;
+
     //타겟 위치
     Vector2 targetPosition1;
     Vector2 targetPosition2;
@@ -202,6 +206,7 @@ public class LHS_Player2Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //나중에 상속으로 관리한다면?
         if (collision.gameObject.layer == LayerMask.NameToLayer("Monster1"))
         {
             collision.gameObject.GetComponent<LHS_Monster1>().Damage(Attack);
@@ -210,6 +215,21 @@ public class LHS_Player2Bullet : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Monster2"))
         {
             collision.gameObject.GetComponent<LHS_Monster2>().Damage(Attack);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Monster3"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster3>().Damage(Attack);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Monster4"))
+        {
+            collision.gameObject.GetComponent<LHS_Monster4>().Damage(Attack);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss"))
+        {
+            collision.gameObject.GetComponent<LHS_Boss>().Damage(Attack);
         }
     }
 
