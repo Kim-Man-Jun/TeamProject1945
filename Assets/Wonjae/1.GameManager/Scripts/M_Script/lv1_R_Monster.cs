@@ -7,6 +7,7 @@ public class lv1_R_Monster : MonoBehaviour
     public Transform ms;
     public GameObject Mbullet;
     public GameObject Item = null;
+    public GameObject DeathMonster;
     public float HP = 15;
     public float moveSpeed = 2f;
     public float Delay = 1;
@@ -36,6 +37,7 @@ public class lv1_R_Monster : MonoBehaviour
         if (HP <= 0)
         {
             ItemDrop();
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

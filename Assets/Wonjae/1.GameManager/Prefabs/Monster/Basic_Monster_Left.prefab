@@ -128,7 +128,8 @@ MonoBehaviour:
   HP: 12
   Delay: 1
   moveSpeed: 1
-  drop: 2
+  drop: 8
+  DeathMonster: {fileID: 3967616081349376275, guid: 3b1ee58758e9f8a448caa7add30e5c3d, type: 3}
   moveDirection: {x: -1, y: -1, z: 0}
 --- !u!61 &6890100700989020031
 BoxCollider2D:

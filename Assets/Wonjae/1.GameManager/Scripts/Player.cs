@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class Player : MonoBehaviour
@@ -11,28 +13,39 @@ public class Player : MonoBehaviour
     public GameObject Pos2Bullet = null;
     public GameObject Pos3Bullet = null;
     public GameObject Dead_Effect;
+    public GameObject Lazer;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     //
     public Transform Pos;
     public Transform Pos2;
     public Transform Pos3;
+
+    public Image Gage;
+    public float gValue = 0;
     //
-    public int HP = 30;
+    [Header("플레이어 속성")]
+    public float HP = 100;
     public int bPower = 0;
     public int pPower = 0;
-    public float Delay = 1.0f;
     public float moveSpeed = 5;
-
     //
+    float MaxHP = 100;   
+    public float Delay = 1.0f;
+    //
+    public float invDuration = 1f;  //무적시간
+    private bool isInvincible = false;  //무적 상태 변수
+    //
+
     private bool isPos2BulletEnalbed = false;
     private bool isPos3BulletEnalbed = false;
-    private bool isDamage = true;
+    //
     private int bulletCount = 0;    //발사된 총알 개수 세는 변수
 
     void Start()
     {
         anim = GetComponent<Animator>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -53,6 +66,8 @@ public class Player : MonoBehaviour
         {
             Instantiate(bullet[bPower], Pos.position, Quaternion.identity);
             bulletCount++;
+            gValue += 0.02f;
+            Gage.fillAmount = gValue;
 
             if (isPos2BulletEnalbed && isPos3BulletEnalbed && bulletCount >= 5)    //5발 발사후 pos2발사
             {
@@ -61,6 +76,22 @@ public class Player : MonoBehaviour
                 bulletCount = 0;    //발사후 초기화
             }
             else Instantiate(bullet[bPower], Pos.position, Quaternion.identity);
+        }
+
+        if (Input.GetKey(KeyCode.Z))
+        {
+            if (gValue >= 1)
+            {
+                GameObject lz = Instantiate(Lazer, Pos.position, Quaternion.identity);
+                Destroy(lz, 2.5f);
+                gValue = 0;
+            }
+
+            gValue -= 0.01f;
+
+            if (gValue >= 0)
+                gValue = 0;
+            Gage.fillAmount = gValue;
         }
 
         if (transform.position.x >= 2.8f)
@@ -94,28 +125,42 @@ public class Player : MonoBehaviour
             isPos3BulletEnalbed = true;
             Destroy(collision.gameObject);
         }
+
     }
 
     public void Damage(int m_Attack)
-    {
-        HP -= m_Attack;
-        if (HP <= 0)
-        {
-            Instantiate(Dead_Effect,transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-        else
-        {
 
+    { if (!isInvincible)
+        {
+            HP -= m_Attack;
+            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            Debug.Log("HP : " + HP);
+            float hpGage = HP / MaxHP;
+            GameObject.Find("Hp").GetComponent<Slider>().value = hpGage;
+
+            if (HP <= 0)
+            {
+                Instantiate(Dead_Effect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            else
+            {
+                StartCoroutine(DurationTime());
+                StartCoroutine(ResetColorAfterDelay(1f));
+            }
         }
     }
 
-    void OnDamaged(Vector2 targetPos)
+    private IEnumerator DurationTime()
     {
-        gameObject.layer = 8;
-        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        isInvincible = true; //무적상태
+        yield return new WaitForSeconds(invDuration);
+        isInvincible = false;
+    }
 
-        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rb.AddForce(new Vector2(dirc,1)*7, ForceMode2D.Impulse);
+    private IEnumerator ResetColorAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.color = new Color(1, 1, 1, 1f); // 색상을 원래대로 복원
     }
 }

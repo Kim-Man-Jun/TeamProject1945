@@ -45,16 +45,26 @@ public class WJ_BossPart1 : MonoBehaviour
         Spot = GameObject.Find("MoveSpot");
         rb = GetComponent<Rigidbody2D>();
         waitTime = startWaitTime;
+        Invoke("Hide", 3.5f);
         Invoke("CreateBullet", 5); 
         Invoke("CreateArmsBullet", 10);
     }
+    void Hide()
+    {
+        //보스 텍스트 객체이름 검색해서 끄기
+        GameObject.Find("TextBossWarning").SetActive(false);
+    }
     private void FixedUpdate()
     {
-        Vector3 dir = Spot.transform.position - transform.position;
-        dir = dir.normalized;
-        float vx = dir.x * moveSpeed;
-        float vy = dir.y * moveSpeed;
-        rb.velocity = new Vector2 (vx, vy);
+        float dis = Vector3.Distance(Spot.transform.position, transform.position);
+        if (dis > 1.2f)
+        {
+            Vector3 dir = Spot.transform.position - transform.position;
+            dir = dir.normalized;
+            float vx = dir.x * moveSpeed;
+            float vy = dir.y * moveSpeed;
+            rb.velocity = new Vector2(vx, vy);
+        }
     }
     void CreateBullet()
     {

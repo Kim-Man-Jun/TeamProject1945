@@ -27,6 +27,10 @@ TagManager:
   - BossParts
   - PowerUp
   - Player2Bullet
+  - MoveSpot
+  - FinalBoss1
+  - FinalBoss2
+  - Lazer_pos
   layers:
   - Default
   - TransparentFX

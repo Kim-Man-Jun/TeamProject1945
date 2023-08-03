@@ -8,6 +8,7 @@ public class Lazer_Monster_wj : MonoBehaviour
     public Transform ms2;
     public GameObject Lazerbullet;
     public GameObject Item = null;
+    public GameObject DeathMonster;
     //
     public int HP = 30;
     public float moveSpeed = 2f;
@@ -46,6 +47,7 @@ public class Lazer_Monster_wj : MonoBehaviour
         if (HP <= 0)
         {
             ItemDrop();
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

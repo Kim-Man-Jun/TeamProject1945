@@ -6,6 +6,7 @@ public class LV2_Monster : MonoBehaviour
 {
     public GameObject Player_Death;
     public GameObject Item = null;
+    public GameObject DeathMonster;
     public float moveSpeed = 5f;
     public int HP = 3; 
     public float drop = 5f;
@@ -27,6 +28,7 @@ public class LV2_Monster : MonoBehaviour
         if (HP <= 0)
         {
             ItemDrop();
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

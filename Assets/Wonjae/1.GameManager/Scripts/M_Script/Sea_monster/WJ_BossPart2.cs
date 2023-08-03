@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class WJ_BossPart2 : MonoBehaviour
 {
-    public float moveSpeed = 3.0f;
+    public float moveSpeed = 1f;
     public float startWaitTime;
     private float waitTime;
     public float StartTime = 1;
@@ -25,6 +27,8 @@ public class WJ_BossPart2 : MonoBehaviour
     public Transform ms2;
     public Transform ms3;
     public Transform BuriMS;
+    public Transform EYE1;
+    public Transform EYE2;
 
     public GameObject Item = null;
     public GameObject BossExplosion;
@@ -41,30 +45,13 @@ public class WJ_BossPart2 : MonoBehaviour
     {
         Spot = GameObject.Find("MoveSpot");
         rb = GetComponent<Rigidbody2D>();
+        waitTime = startWaitTime;
         Invoke("CreateBullet", 1);
         Invoke("CreateDrill", 7);
         StartCoroutine(CircleFire());
         Invoke("Thunder", 2f);
     }
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    transform.position = Vector2.MoveTowards(transform.position, moveSpot.position,
-    //        moveSpeed * Time.deltaTime);
-        
-    //    if (Vector2.Distance(transform.position, moveSpot.position) < 0.2)
-    //    {
-    //        if (waitTime <= 0)
-    //        {
-    //            moveSpot.position = new Vector2(Random.Range(minX, maxX),Random.Range(minY, maxY));
-    //            waitTime = startWaitTime;
-    //        }
-    //        else
-    //        {
-    //            waitTime -= Time.deltaTime;
-    //        }
-    //    }
-    //}
+
     void CreateBullet()
     {
         Instantiate(Mbullet, ms3.position, Quaternion.identity);
@@ -100,11 +87,23 @@ public class WJ_BossPart2 : MonoBehaviour
             yield return new WaitForSeconds(attackRate);
         }
     }
+    private void FixedUpdate()
+    {
+        float dis = Vector3.Distance(Spot.transform.position, transform.position);
+        if (dis > 1.2f)
+        {
 
+            Vector3 dir = Spot.transform.position - transform.position;
+            dir = dir.normalized;
+            float vx = dir.x * moveSpeed;
+            float vy = dir.y * moveSpeed;
+            rb.velocity = new Vector2(vx, vy);
+        }
+    }
     void Thunder()
     {   
-            Instantiate(L_thunder, ms1.transform.position, Quaternion.identity);
-            Instantiate(R_thunder, ms2.transform.position, Quaternion.identity);
+            Instantiate(L_thunder, EYE1.transform.position, Quaternion.identity);
+            Instantiate(R_thunder, EYE2.transform.position, Quaternion.identity);
             Invoke("Thunder", 8f);
     }
 

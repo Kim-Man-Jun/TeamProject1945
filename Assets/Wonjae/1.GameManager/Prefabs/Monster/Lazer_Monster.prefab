@@ -177,6 +177,7 @@ MonoBehaviour:
   ms2: {fileID: 2837612754034090443}
   Lazerbullet: {fileID: 7011830863912292932, guid: 5bc1edfa0229ed74e99bcc9742908cc6, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
+  DeathMonster: {fileID: 3967616081349376275, guid: 3b1ee58758e9f8a448caa7add30e5c3d, type: 3}
   HP: 25
   moveSpeed: 5
   Delay: 1

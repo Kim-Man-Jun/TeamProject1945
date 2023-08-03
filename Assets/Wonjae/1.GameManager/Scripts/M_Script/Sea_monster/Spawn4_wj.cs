@@ -84,7 +84,7 @@ public class Spawn4_wj : MonoBehaviour
 
     IEnumerator Delayed_Scurzy()
     {
-        yield return new WaitForSeconds(37);
+        yield return new WaitForSeconds(40);
         StartCoroutine("RandomSpawn2");
         
     }

@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &990883737095277824
 SpriteRenderer:
@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BSpeed: 3
+  Player_Death: {fileID: 7221482564338590666, guid: 9445fda833b2be94aa9bc620a512939a, type: 3}
+  m_Attack: 10

@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba22bc12f17e9cf429fb3616a77c7c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 1.5
   startWaitTime: 4.5
   minX: -2.3
   maxX: 2.3
@@ -968,7 +968,7 @@ MonoBehaviour:
   arms_Bullet: {fileID: 7415887176666363228, guid: de3f07c40d93c7a41825b29c0cafeee4, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
   BossExplosion: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
-  FinalBoss2: {fileID: 9197053564922579376, guid: c6328b626f879ff4ea47b51b52be5cfc, type: 3}
+  FinalBoss2: {fileID: 1675997202462607861, guid: c6328b626f879ff4ea47b51b52be5cfc, type: 3}
   SpotSpeed: 3
 --- !u!50 &5395863841228125854
 Rigidbody2D:

@@ -8,7 +8,7 @@ public class WJ_Monster06 : MonoBehaviour
     public GameObject DropBoss;
     public float StartTime = 1;
     public float spawnStop = 2;
-    bool swi = true;
+    public bool swi = true;
 
     void Start()
     {
@@ -56,8 +56,7 @@ public class WJ_Monster06 : MonoBehaviour
 
     IEnumerator Delayed_DropBoss()
     {
-        //yield return new WaitForSeconds(50);
-        yield return new WaitForSeconds(2);
+         yield return new WaitForSeconds(55);
          StartCoroutine("Create_DropBoss");
     }
 

@@ -6,6 +6,7 @@ public class R_Monster_sc : MonoBehaviour
 {
     public Transform ms;
     public GameObject Mbullet;
+    public GameObject DeathMonster;
     public float moveSpeed = 1f;
     public float Delay;
     public float HP = 3;
@@ -26,6 +27,7 @@ public class R_Monster_sc : MonoBehaviour
         HP -= Attack;
         if (HP <= 0)
         {
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item: {fileID: 317854930249500674, guid: f6701d48caf984f4b8cd95b79447a3ce, type: 3}
   H_Bullet: {fileID: 124564360532191565, guid: 5046bd787734b40448e331b8b9f50d49, type: 3}
-  Dead_Effect: {fileID: 1761035817182838059, guid: 93eb0d29a6f062047b93c0a9c36e12a9, type: 3}
+  Dead_Effect: {fileID: 1761035817182838059, guid: e4d32b3d461de4a4ba94ee0a3465c40c, type: 3}
   Delay: 0.3
   moveSpeed: 1
   HP: 220

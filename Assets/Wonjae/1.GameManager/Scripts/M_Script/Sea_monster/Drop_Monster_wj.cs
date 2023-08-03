@@ -5,6 +5,9 @@ using UnityEngine.UIElements;
 
 public class Drop_Monster_wj : MonoBehaviour
 {
+    [SerializeField]
+    GameObject textBossWarning; //보스등장 오브젝트
+
     public Transform ms1;
     public Transform ms2;
     public Transform ms3;
@@ -28,8 +31,8 @@ public class Drop_Monster_wj : MonoBehaviour
 
     void Start()
     {
-        Invoke("CreateBullet", delay);
-        Invoke("CreateMS_Bullet", delay + 2); 
+        Invoke("CreateBullet", 0.5f);
+        Invoke("CreateMS_Bullet", delay); 
     }
 
     void CreateBullet()
@@ -68,7 +71,6 @@ public class Drop_Monster_wj : MonoBehaviour
             Instantiate(Item, ms1.position, Quaternion.identity);
         }
     }
-
     public void Damage(int Attack)
     {
         SpawnBoss Spawn = FindObjectOfType<SpawnBoss>();
@@ -78,9 +80,11 @@ public class Drop_Monster_wj : MonoBehaviour
             Instantiate(BossExplosion, transform.position, Quaternion.identity);
             ItemDrop();
             Destroy(gameObject);
-            Instantiate(FinalBoss1, transform.position, Quaternion.identity);    
+            textBossWarning.SetActive(true);
+            Instantiate(FinalBoss1, transform.position, Quaternion.identity);       
         }
     }
+        
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

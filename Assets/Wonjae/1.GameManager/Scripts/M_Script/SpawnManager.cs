@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+
     public float left_ss = -2.3f;
     public float right_es = 2.3f;
 
@@ -14,7 +15,6 @@ public class SpawnManager : MonoBehaviour
     public GameObject Monster2;
 
     bool swi = true;
-
     void Start()
     {
         StartCoroutine("RandomSpawn");

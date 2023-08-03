@@ -11,7 +11,6 @@ public class Background : MonoBehaviour
         myMaterial = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float newOffsetY = myMaterial.mainTextureOffset.y + scrollSpeed * Time.deltaTime;

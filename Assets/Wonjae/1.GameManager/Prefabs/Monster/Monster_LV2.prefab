@@ -195,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player_Death: {fileID: 7221482564338590666, guid: 9445fda833b2be94aa9bc620a512939a, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
+  DeathMonster: {fileID: 3967616081349376275, guid: 3b1ee58758e9f8a448caa7add30e5c3d, type: 3}
   moveSpeed: 3
   HP: 5
-  drop: 2
+  drop: 8

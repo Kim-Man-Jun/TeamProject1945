@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour
     public Transform ms;
     public GameObject Mbullet;
     public GameObject Item = null;
+    public GameObject DeathMonster;
     //
     public int HP = 25;
     public float moveSpeed = 2f;
@@ -43,10 +44,10 @@ public class Monster : MonoBehaviour
         if(HP <= 0 )
         {
             ItemDrop();
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
-
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

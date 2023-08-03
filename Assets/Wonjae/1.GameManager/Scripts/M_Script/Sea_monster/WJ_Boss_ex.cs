@@ -10,12 +10,6 @@ public class WJ_Boss_ex : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Damage(int Attack)
     {
         HP -= Attack;

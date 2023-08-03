@@ -228,7 +228,8 @@ MonoBehaviour:
   ms: {fileID: 235210833124402512}
   Mbullet: {fileID: 124564360532191565, guid: 5046bd787734b40448e331b8b9f50d49, type: 3}
   Item: {fileID: 2768072235134893135, guid: 455f409b9570f914ba3865a39bf7e92d, type: 3}
+  DeathMonster: {fileID: 3967616081349376275, guid: 3b1ee58758e9f8a448caa7add30e5c3d, type: 3}
   HP: 7
   moveSpeed: 2
   Delay: 1
-  drop: 2
+  drop: 8

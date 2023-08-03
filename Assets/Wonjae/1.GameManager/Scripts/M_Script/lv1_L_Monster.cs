@@ -12,6 +12,7 @@ public class lv1_L_Monster : MonoBehaviour
     public float Delay = 1f;
     public float moveSpeed = 2f;
     public float drop = 5f;
+    public GameObject DeathMonster;
     public Vector3 moveDirection = new Vector3(-1, -1, 0);
     void Start()
     {
@@ -42,6 +43,7 @@ public class lv1_L_Monster : MonoBehaviour
         if (HP <= 0)
         {
             ItemDrop();
+            Instantiate(DeathMonster, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

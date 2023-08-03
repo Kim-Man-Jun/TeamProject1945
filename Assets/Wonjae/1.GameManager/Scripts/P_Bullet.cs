@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class P_Bullet : MonoBehaviour
 {
     public float B_speed = 8.0f;
     public int Attack = 0;
     public GameObject explosion;
-   // public Transform[] AdditionalBulletSpawnPoints; // 추가 발사 위치들을 배열로 관리합니다.
+    // public Transform[] AdditionalBulletSpawnPoints; // 추가 발사 위치들을 배열로 관리합니다.
 
     // Update is called once per frame
+
     void Update()
     {
         transform.Translate(Vector2.up * B_speed * Time.deltaTime);
@@ -93,6 +97,7 @@ public class P_Bullet : MonoBehaviour
             collision.gameObject.GetComponent<WJ_BossPart2>().Damage(Attack);
             Destroy(gameObject);
         }
+
 
     }
 

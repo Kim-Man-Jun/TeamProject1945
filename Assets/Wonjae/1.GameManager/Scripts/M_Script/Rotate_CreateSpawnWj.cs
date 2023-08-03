@@ -10,7 +10,7 @@ public class Rotate_CreateSpawnWj : MonoBehaviour
     public float SpawnStop = 3;
     public GameObject Monster;
 
-    bool swi = true;
+    public bool swi = true;
 
     void Start()
     {

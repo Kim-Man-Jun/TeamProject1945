@@ -7,10 +7,10 @@ public class Rotate_Spawn : MonoBehaviour
     public float left_ss = 0f;
     public float right_es = 0f;
     public float StartTime = 1; 
-    public float SpawnStop = 3;
+    public float SpawnStop = 3f;
     public GameObject Monster;
 
-    bool swi = true;
+    public bool swi = true;
 
 
     void Start()
