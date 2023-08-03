@@ -8,10 +8,18 @@ public class Item : MonoBehaviour
 
     public float ItemVelocity = 30f;
 
+    private AudioSource Audio;
+
+    public AudioClip HpUp;
+    public AudioClip PowerUp;
+    public AudioClip Bomb;
+
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        Audio = GetComponent<AudioSource>();
+
         int rnd = Random.Range(1, 5);
         if (rnd == 1)
         {
@@ -58,6 +66,7 @@ public class Item : MonoBehaviour
                 }
 
                 Debug.Log(PlayerController.WeaponPower);
+                Audio.PlayOneShot(PowerUp);
                 Destroy(gameObject);
             }
 
@@ -71,6 +80,7 @@ public class Item : MonoBehaviour
                 }
 
                 Debug.Log(PlayerController.Bomb);
+                Audio.PlayOneShot(Bomb);
                 Destroy(gameObject);
             }
 
@@ -82,6 +92,7 @@ public class Item : MonoBehaviour
                 {
                     PlayerController.NowHP = 100;
                 }
+                Audio.PlayOneShot(HpUp);
                 Destroy(gameObject);
             }
         }
