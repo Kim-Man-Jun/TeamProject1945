@@ -13,4 +13,4 @@ Unity Engine 기반으로 제작한 2D Shooting Game 포트폴리오입니다.
 - 링크 : 
 
 ## Project Video
-- 링크 : 
+- 링크 : https://youtu.be/bzsFzoR5-1E
