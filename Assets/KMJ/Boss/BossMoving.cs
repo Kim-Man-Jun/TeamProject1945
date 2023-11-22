@@ -7,12 +7,12 @@ using UnityEngine.UIElements;
 
 public class BossMoving : MonoBehaviour
 {
-    //º¸½º ¸Ó¸®Åë µ¹¾Æ°¡´Â °¢µµ °è»ê°ú ¾Ö´Ï¸ŞÀÌ¼Ç
+    //ë³´ìŠ¤ ë¨¸ë¦¬ ëŒì•„ê°€ëŠ” ê°ë„ ê³„ì‚°ê³¼ ì• ë‹ˆë©”ì´ì…˜
     Animator animator;
     public Vector2 PlayerVector;
     public Vector2 BossVector;
 
-    //º¸½º ¹ì ¿òÁ÷ÀÓ °ü·Ã
+    //ë³´ìŠ¤ ë±€ ì›€ì§ì„ ê´€ë ¨
     public float distanceBetween = 0.2f;
     public float Speed = 200;
     public float turnSpeed = 180;
@@ -23,7 +23,7 @@ public class BossMoving : MonoBehaviour
 
     Transform basicPos;
 
-    //·£´ı ¹«ºù¿ë º¯¼ö
+    //ëœë¤ ë¬´ë¹™ìš© ë³€ìˆ˜
     public Vector2 Target;
     public float minX = -1.35f;
     public float maxX = 1.35f;
@@ -32,21 +32,21 @@ public class BossMoving : MonoBehaviour
 
     public float BossMovingSpeed = 4;
 
-    //°ÔÀÓ ¿ÀºêÁ§Æ®ÀÇ Ã³À½ À§Ä¡ ÀúÀå
+    //ê²Œì„ ì˜¤ë¸Œì íŠ¸ì˜ ì²˜ìŒ ìœ„ì¹˜ ì €ì¥
     private void Awake()
     {
         basicPos = this.gameObject.transform;
     }
 
-    //¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ®¿Í º¸½º ¸öÅë »ı¼º, ·£´ı ¿òÁ÷ÀÓ
+    //ì• ë‹ˆë©”ì´í„° ì»´í¬ë„ŒíŠ¸ì™€ ë³´ìŠ¤ ëª¸í†µ ìƒì„±, ëœë¤ ì›€ì§ì„
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        //¹ì ¿òÁ÷ÀÓ °ü·Ã
+        //ë±€ ì›€ì§ì„ ê´€ë ¨
         CreateBodyParts();
         
-        //º¸½º ·£´ı¹«ºù ÄÚ·çÆ¾
+        //ë³´ìŠ¤ ëœë¤ë¬´ë¹™ ì½”ë£¨í‹´
         StartCoroutine("BossRandomMoving");
     }
 
@@ -157,7 +157,6 @@ public class BossMoving : MonoBehaviour
 
         gameObject.transform.position = Vector2.MoveTowards(
             transform.position, Target, BossMovingSpeed * Time.deltaTime);
-        //¿Ö Áö¿ì¸é ¾ÈµÇ´ÂÁö ¸ğ¸£°ÚÀ½..
 
         if(BossController.BossNowHp <= 0)
         {
@@ -209,10 +208,10 @@ public class BossMoving : MonoBehaviour
         }
     }
 
-    //°¢µµ °è»ê¿ë
+    //ê°ë„ ê³„ì‚°ìš©
     public static float GetAngle(Vector2 vStart, Vector2 vEnd)
     {
-        Vector2 v = vEnd - vStart;          //º¯¼ö v »ı¼º 
+        Vector2 v = vEnd - vStart;          //ë³€ìˆ˜ v ìƒì„± 
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
 
