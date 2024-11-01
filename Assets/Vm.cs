@@ -25,7 +25,7 @@ public class Vm : MonoBehaviour
 
     private void Awake()
     {
-        pv.Play();
+        //pv.Play();
     }
     // Update is called once per frame
     void Update()

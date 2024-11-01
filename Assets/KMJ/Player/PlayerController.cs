@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < SpecialAttackFire.Length; i++)
             {
+                //플레이어 nowAnime에 연동되게 만듦
                 SpecialAttackFire[i].GetComponent<Animator>().Play(nowAnime);
             }
         }
@@ -193,10 +194,8 @@ public class PlayerController : MonoBehaviour
                 return;
             }
         }
-
         //현재 HP 계산
         NowHPBar.fillAmount = (float)NowHP / (float)MaxHP;
-
     }
 
     //폭탄 사용 코루틴 시작
@@ -207,6 +206,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(SPFire());
         }
 
+        //연속해서 누를 경우 return
         else
         {
             return;
@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour
     {
         specialAttackOnOff = true;
         Bomb--;
+        //플레이어 무적 상태
         box2D.enabled = false;
 
         for (int i = 0; i < SpecialAttackFire.Length; i++)
@@ -225,6 +226,7 @@ public class PlayerController : MonoBehaviour
             SpecialAttackFire[i].SetActive(true);
         }
 
+        //지속 시간은 5초
         yield return new WaitForSeconds(5);
 
         specialAttackOnOff = false;

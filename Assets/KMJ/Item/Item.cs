@@ -21,6 +21,8 @@ public class Item : MonoBehaviour
         Audio = GetComponent<AudioSource>();
 
         int rnd = Random.Range(1, 5);
+
+        //아이템 드롭 시 랜덤한 방향으로 나가게 만듦
         if (rnd == 1)
         {
             rigid.AddForce(new Vector3(ItemVelocity, ItemVelocity, 0f));
@@ -41,11 +43,6 @@ public class Item : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnBecameInvisible()
     {
